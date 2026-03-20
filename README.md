@@ -30,7 +30,9 @@
 - **Offline-capable** with cached data
 - **Responsive design** — native feel on any screen size
 
-![Mobile View](./assets/mobile.jpeg)
+
+<img src="./assets/mobile.jpeg" width="300" />
+
 
 ## 🛠️ Tech Stack
 
@@ -75,7 +77,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/scoreboard.git
+git clone https://github.com/raghavtandon13/scoreboard.git
 cd scoreboard
 
 # Install dependencies
