@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC TERMINAL | Real Madrid CF</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#006513",
+              "outline": "#747577",
+              "inverse-primary": "#006f16",
+              "on-error": "#490006",
+              "on-error-container": "#ffa8a3",
+              "surface-container-lowest": "#000000",
+              "on-tertiary-fixed-variant": "#3f5875",
+              "error": "#ff716c",
+              "error-container": "#9f0519",
+              "on-secondary-fixed": "#353f56",
+              "surface": "#0c0e0f",
+              "tertiary-dim": "#b4cef0",
+              "tertiary-fixed-dim": "#b4cef0",
+              "on-secondary-container": "#c5d0ec",
+              "inverse-surface": "#f9f9fa",
+              "secondary-container": "#3c475d",
+              "surface-variant": "#232628",
+              "tertiary-container": "#c2dcff",
+              "surface-dim": "#0c0e0f",
+              "surface-bright": "#292c2e",
+              "secondary-dim": "#c9d4f0",
+              "tertiary-fixed": "#c2dcff",
+              "on-primary": "#006413",
+              "tertiary": "#dbe9ff",
+              "surface-container-highest": "#232628",
+              "surface-container": "#181a1b",
+              "outline-variant": "#464849",
+              "surface-container-high": "#1d2021",
+              "primary-fixed-dim": "#00ec3b",
+              "inverse-on-surface": "#545556",
+              "primary-container": "#00fc40",
+              "on-tertiary-fixed": "#223c57",
+              "on-background": "#f6f6f7",
+              "primary": "#9cff93",
+              "secondary-fixed-dim": "#c9d4f0",
+              "on-surface": "#f6f6f7",
+              "surface-tint": "#9cff93",
+              "on-secondary-fixed-variant": "#515c73",
+              "secondary": "#d7e2ff",
+              "error-dim": "#d7383b",
+              "on-primary-container": "#005a10",
+              "on-surface-variant": "#aaabac",
+              "primary-fixed": "#00fc40",
+              "background": "#0c0e0f",
+              "primary-dim": "#00ec3b",
+              "on-tertiary": "#3e5774",
+              "surface-container-low": "#111415",
+              "secondary-fixed": "#d7e2ff",
+              "on-tertiary-container": "#354e6b",
+              "on-primary-fixed": "#00440a",
+              "on-secondary": "#475269"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(12, 14, 15, 0.6);
+        backdrop-filter: blur(20px);
+      }
+      .kinetic-gradient {
+        background: linear-gradient(135deg, #9cff93 0%, #00fc40 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#0c0e0f]/60 backdrop-blur-xl shadow-[0_0_32px_0_rgba(246,246,247,0.06)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#9cff93] cursor-pointer hover:scale-110 transition-transform">menu</span>
+<span class="font-['Space_Grotesk'] uppercase tracking-widest text-xl font-bold text-[#9cff93]">KINETIC TERMINAL</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#9cff93] border-b-2 border-[#9cff93] py-1 transition-all duration-200" href="#">Matches</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-200" href="#">Leagues</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-200" href="#">Squad</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN5qtfQwaGDbwMlsKwlyxdknEQmQCwPGAVjqWMHNrcatJBSmkINrX909yVWNGPNuGqBP7Q51WHwn34rqiMmQd-zOscZk9X9mvwaqnb7XXlf8VE3RkJvcUPsyVNjBTa_-83L4cxk6dlDBULliNLCVSkGmQlWjxLyJZjLk13JPYpBcTrJ8dc913yFlLN08koXWcm98_2x68SLQUoceYfQWJGq74vZW_VoK8ku4nfr0mPdUzjElhtdqvnrIREBaExi3IHPLceIBfygxk"/>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pb-12 max-w-7xl mx-auto px-4 sm:px-6">
+<!-- Hero Section -->
+<section class="relative h-[397px] md:h-[486px] mt-6 rounded-xl overflow-hidden flex flex-col justify-end p-8 md:p-12">
+<div class="absolute inset-0 z-0">
+<img alt="Santiago Bernabéu Stadium" class="w-full h-full object-cover opacity-40" data-alt="Cinematic wide shot of Santiago Bernabéu stadium interior at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhdld0MP_x4BczGGVn2gTTQnZ8iWtpv4fxuC7zIiuDqI3VVwPNdoCcUbrY49Y9zd8xdIuFd317FE738hSyk-DzHsFvZ3hsqfJUKCNWxpr04k6pccFBTf7AYmEWV49FpJpuH77wU_7-nmdp5LGd97Drp_FESTvmtxFBfh2QuK-xravrmxYxV7fC50JmyRrSiHMinZupPFU-1O6X3FNNe6o0gvfIvGoWnPxcapiy61cCMGKA2Y0TrSa_PoEKtyCiCbnY9JOsJpnBQi8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="w-24 h-24 md:w-32 md:h-32 p-2 bg-surface-container-low/80 backdrop-blur-md rounded-xl border border-outline-variant/20">
+<img alt="Real Madrid Crest" data-alt="Real Madrid professional football club crest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlGesU5AePI-U5UouF4KcO4AE2UeuWA07T5XPdzUjyMffAhKihFx6OQ992-zHyF4RnjZuW2BK-QTuO1wpJcInz-wOUeCcgDa0nip13oc7DBhXkPCgkqIMC-bZj-2ev9iwzpJTBZxyCmroMiMbQIGIHKSFFpvUsD4Mxy3QjsfLxjWCsdlg0PrBb7q61mVJ2oCmBDacwwQdbgZGHwRT3gnwb_OYMT2TFk3TC0d_93DiT-9cHUhI8LFZkm7pqpnFsL-yxwF2f5ECpOO4"/>
+</div>
+<div>
+<h1 class="font-headline text-4xl md:text-7xl font-bold tracking-tighter leading-none">REAL MADRID CF</h1>
+<p class="font-label text-primary mt-2 flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                            ACTIVE SESSION: LA LIGA SANTANDER
+                        </p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface-container-high/60 backdrop-blur-sm rounded-lg border border-outline-variant/20">
+<p class="text-[10px] font-label text-on-surface-variant uppercase">Foundation</p>
+<p class="font-headline text-lg font-bold">1902</p>
+</div>
+<div class="px-4 py-2 bg-surface-container-high/60 backdrop-blur-sm rounded-lg border border-outline-variant/20">
+<p class="text-[10px] font-label text-on-surface-variant uppercase">Manager</p>
+<p class="font-headline text-lg font-bold">C. Ancelotti</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-10">
+<!-- Left Column: Upcoming & Form -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Next Match Node -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden border border-outline-variant/10 shadow-2xl relative">
+<div class="p-1 bg-gradient-to-r from-primary/20 via-transparent to-transparent"></div>
+<div class="p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex flex-col items-center md:items-start text-center md:text-left">
+<span class="text-[10px] font-label text-primary uppercase tracking-[0.2em] mb-4">Upcoming Fixture</span>
+<div class="flex items-center gap-6">
+<div class="text-center">
+<img alt="Real Madrid" class="w-16 h-16 mx-auto mb-2" data-alt="Real Madrid logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZfsgMkoQ7iKgIGjr_ig4zr8KaVFkRgHcxR7O6KJsEHL2D_FaODU1zKsydsJfYN47201EjUsdve1WFTDpER8CQexLYluT2zHRRvNlAADeDABbq7l1kmwGpk5ng0_ZnCLefAIT_SVLA_bEdB3MMCIcCJhNILmfxPpzX2CqUk9uYPQI9Gq907jPe-YWN8Rpd79B5mVmJo4KRZOJuY1_7W-X7du_fnPRo3lm11kyGt6otJFJ2HOUhNyrpMgC91bk-7PrCKFP1D2ByCXA"/>
+<span class="font-headline text-sm font-medium">MADRID</span>
+</div>
+<span class="font-headline text-2xl text-on-surface-variant italic font-light">VS</span>
+<div class="text-center">
+<img alt="Man City" class="w-16 h-16 mx-auto mb-2" data-alt="Manchester City logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCStXdgjtXJEjIYZWIk3hwm55IVHjKAl_K5IrSDycZVzSWaITYEHxEIBKf6IFpOGrH1AoQCwCr8-gSJAVHZzj7vSW7gK8zrtvTD1loxzLGT2ohsuS6HYSG4S3tyUno_dg4SybBEL2uEZafW9ouP7idebbCPDM1kuGa0geVZLf8KG4mK9_PWkDTsSKjAj7Ssa2rhKGqHN16JPd01XIc-ZjE21DwTKLdFJ_8GBoYl-odIsrc1P4EZ_4pmY65B-7b1xlkzIw0d01n0zD0"/>
+<span class="font-headline text-sm font-medium">CITY</span>
+</div>
+</div>
+</div>
+<div class="h-px md:h-20 w-full md:w-px bg-outline-variant/20"></div>
+<div class="flex flex-col items-center md:items-start">
+<span class="text-[10px] font-label text-on-surface-variant uppercase mb-2">Kickoff T-Minus</span>
+<div class="flex gap-4 font-headline text-3xl font-bold text-on-surface">
+<div class="flex flex-col items-center"><span>02</span><span class="text-[8px] font-label text-on-surface-variant">DAYS</span></div>
+<span class="text-primary">:</span>
+<div class="flex flex-col items-center"><span>14</span><span class="text-[8px] font-label text-on-surface-variant">HRS</span></div>
+<span class="text-primary">:</span>
+<div class="flex flex-col items-center"><span>28</span><span class="text-[8px] font-label text-on-surface-variant">MIN</span></div>
+</div>
+</div>
+<div class="flex flex-col gap-3 w-full md:w-auto">
+<button class="kinetic-gradient text-on-primary px-6 py-3 rounded-md font-headline font-bold text-sm tracking-tight hover:brightness-110 active:scale-95 transition-all">GET TICKETS</button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-md font-headline font-bold text-sm tracking-tight border border-outline-variant/30 hover:bg-surface-bright transition-all">SET ALERT</button>
+</div>
+</div>
+<div class="px-6 py-3 bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2 text-[10px] font-label text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                            SANTIAGO BERNABÉU, MADRID
+                        </div>
+<div class="flex items-center gap-2 text-[10px] font-label text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">sports_soccer</span>
+                            UEFA CHAMPIONS LEAGUE
+                        </div>
+</div>
+</div>
+<!-- Form Terminal -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-xs font-bold tracking-widest text-on-surface-variant uppercase mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Form Terminal_
+                    </h3>
+<div class="grid grid-cols-5 gap-4">
+<!-- W -->
+<div class="group relative bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 hover:border-primary/40 transition-all cursor-crosshair">
+<div class="flex flex-col items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary shadow-[0_0_12px_#9cff93]"></div>
+<img alt="Osasuna" class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Osasuna football club icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL2FPGxCiWd4qDtCKueYOAcT8qrU-F_U-heJSeILSAkcWK88GPq3LjXKwOBu4VDkZBc6zU8KoSHmp50zim0mpuH4ATNDQwwYq3areEyVU-D_jSGk3bmlK7PH-ZpbGZ26FgpJWb4Jj6MrhV54S6cM7Igf3Ng0BSXY1NmaT-ZIKcFx92YMv-BdmAe1TSlCefhi7G_jPGcqHB5RBHBRqJhX-5CoqtF5vZOogSTA4oroQA_QN1Z8rDlqUQ88hDQMulNnLPa9wXrpJibeU"/>
+<span class="font-headline text-lg font-bold">4-0</span>
+</div>
+</div>
+<!-- W -->
+<div class="group relative bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 hover:border-primary/40 transition-all cursor-crosshair">
+<div class="flex flex-col items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary shadow-[0_0_12px_#9cff93]"></div>
+<img alt="Valencia" class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Valencia football club icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM61ZGOlp43O_wStnSvm67Pa8u3W2n0R8RqQ9lgtWBKo6oj2ZHjtAXMbaod-dwO-OrolwOnL3-CDpxmJnPk6xv42Rbsuv5PizFMrEg6nMCcLEYw45TO8BGgt9w-NTs88YB0Xd9T7KEsMSefiN5C2fcq3GXWJD2yBKsQEZj2P-FOyWJg2Zx5RbdHY6ghlMERHQVYQbs_8SgIWBMjdQasVHBDnvpag-vbbK_Gc5OrP4mdzbx0RlGGRrTZ-B2-Mo2CAD0vgKPWItwy1Q"/>
+<span class="font-headline text-lg font-bold">5-1</span>
+</div>
+</div>
+<!-- D -->
+<div class="group relative bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 hover:border-on-surface-variant/40 transition-all cursor-crosshair">
+<div class="flex flex-col items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-on-surface-variant/50"></div>
+<img alt="Rayo" class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Rayo Vallecano icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZLGkHxoB5m9h1SbmjjQLQUMB18ScqECubUZvTusBFMz9Iq8igDSh_tKySdRTK4SGx22sz-KpOR8ryfcusFMsMizYiuNly2iRqEDTJ2x8GGZCJYTlHyf3bn0Lq-yDiiGRoIip0i1OX3ClvN8WGFIC2DNT90Crpv-_8V0YUcvdGmNSU4fMddR79RaictELkuvTFMQ0PaXrIA15g33cgQMses-fownViX8ZASJ5xfDwqlNiL9_8R27uBueBGQuRuwj4LRpvaDPBLkZI"/>
+<span class="font-headline text-lg font-bold">0-0</span>
+</div>
+</div>
+<!-- W -->
+<div class="group relative bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 hover:border-primary/40 transition-all cursor-crosshair">
+<div class="flex flex-col items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary shadow-[0_0_12px_#9cff93]"></div>
+<img alt="Braga" class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" data-alt="SC Braga icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACoZvNRy_EkGq6B6lw40ewAO7Ksbv8kr66I8H62xY43N7Etwf3vu5e5aLfAkiC0aRJYDGzZi9O4LQ50OT5cfmdnrmvlBtu15PqeY18VhetEcEGMn10fYKM_tTfia6egRFk1GHwXA5T_gPtlMO1gafoodVL8G97-P5ANZKO3M0ov_oZNp9Bf5UvazYHtQqXPf0SawsGgMwk5-86slrkueCa5WvHIFRutg2fsar9mowpSsu4I-eBZ3A42bfT6fYjfMPT61sKgLQarIo"/>
+<span class="font-headline text-lg font-bold">3-0</span>
+</div>
+</div>
+<!-- L -->
+<div class="group relative bg-surface-container-high rounded-xl p-4 border border-outline-variant/10 hover:border-error/40 transition-all cursor-crosshair">
+<div class="flex flex-col items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-error shadow-[0_0_12px_#ff716c]"></div>
+<img alt="Atletico" class="w-8 h-8 opacity-60 group-hover:opacity-100 transition-opacity" data-alt="Atletico Madrid icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSq070lI3Sh88QNZHLFeAFFniC4xDHBlP9EwTh1ug--fjEB5ZTma1cE2ti4uPCA_YHXnzlG7Hlq8ZVZiZLftotk4P_w-lSgMsIehKxBLsLaAnlDMFhdYEkYcDx-jxXRTeHnB8_nzCxpbeVZTpd_D6uFXq6hoYRD84zjyzv-L9JfBjJ7cjFeT3L92xWsXb2OFwQ-wLTBN1SpY-10wnlNMk7YSCvX99oVqF5yvqxHsNYN_-q7kQWo34SUU2qHMZ56yqNjJedyMU5iBE"/>
+<span class="font-headline text-lg font-bold">1-3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Squad Terminal -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline text-xs font-bold tracking-widest text-on-surface-variant uppercase flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Squad Inventory_
+                        </h3>
+<div class="flex gap-2">
+<span class="text-[10px] font-label px-3 py-1 bg-primary/10 text-primary rounded-full">ALL</span>
+<span class="text-[10px] font-label px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full hover:text-on-surface cursor-pointer">DEF</span>
+<span class="text-[10px] font-label px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full hover:text-on-surface cursor-pointer">MID</span>
+<span class="text-[10px] font-label px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full hover:text-on-surface cursor-pointer">ATT</span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+<!-- Player Card 1 -->
+<div class="bg-surface-container-high rounded-lg p-4 group hover:bg-surface-bright transition-colors">
+<div class="relative w-full aspect-[4/5] bg-surface-container-highest rounded overflow-hidden mb-4">
+<img alt="Vini Jr" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Vinícius Júnior professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUvAXgdSiaIlWnfi6b68Cyd-suxXOsFYkKwCh8e5Dc1dP-t5oVDRrslcSJncbTnGB0BPTWjsFdd_0qLWADbvo08hVyMIOaDGvLh790u7Tlp4BmNBuyjXaPGpiLYu13oJeeakbm5vsz2v7DuCaVsKUbhZbJVQqAQfnrwq1-QQ2IL1976Klfc66e2GBltU9DHnHLKoWYPkeuv1qSjGjMeZJU_Wkw_zbyYouUZ7_VnjJ29GWCwS43L-DX5EmAtqhDOWduCkJyLH0tixk"/>
+<div class="absolute bottom-2 left-2 px-2 py-1 bg-primary text-on-primary font-headline font-black text-xs">7</div>
+</div>
+<h4 class="font-headline font-bold text-sm">VINI JR</h4>
+<div class="flex justify-between mt-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Attacker</span>
+<span class="font-label text-[10px] text-primary">12 G / 8 A</span>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="bg-surface-container-high rounded-lg p-4 group hover:bg-surface-bright transition-colors">
+<div class="relative w-full aspect-[4/5] bg-surface-container-highest rounded overflow-hidden mb-4">
+<img alt="Jude Bellingham" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Jude Bellingham professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0dziLNruEFh4k21uRRBRQG1dviu-kQ3YYX9fr6Z5DawWoS9Xd2RBKCxVuJZh_CUnixcQJ18hbhnR_diId90VMzvMTGyBEFMqVkmoU85jsI2ZJ7HflZSh2ySpYl2nR1qxnr7HC_JjuHfstA8W7sr1O5i9kgXl1ou6zfgImTFhPEqW4x7hR1zQBB1n6sXPfoJym-mY8lZhg479LMQ9m6T8KdrXOGKkVd-teu8PB4OyJJjP5giVDqPvT-7L6dns2ffsTf8fw37nygGo"/>
+<div class="absolute bottom-2 left-2 px-2 py-1 bg-primary text-on-primary font-headline font-black text-xs">5</div>
+</div>
+<h4 class="font-headline font-bold text-sm">BELLINGHAM</h4>
+<div class="flex justify-between mt-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Midfielder</span>
+<span class="font-label text-[10px] text-primary">16 G / 4 A</span>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="bg-surface-container-high rounded-lg p-4 group hover:bg-surface-bright transition-colors">
+<div class="relative w-full aspect-[4/5] bg-surface-container-highest rounded overflow-hidden mb-4">
+<img alt="Fede Valverde" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Federico Valverde professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVLLyWgRyHeiU1K1HSLk_1a_Kd_B15m04ZFWTgHc211wphseK-7RYwNQ8RnRdZ7PKsaA2i7qN1K_8m0wBWe2-d2aBykS_BRLuiGkcpfJFgDzgSMmFtC3tDfnzFEj5N5sz6SOwLi8Vzvcy82YH1ZLT233f0IsuYQG4q2NJX0l0PzP3SxxMl0U1dshzqoyfEZmevZkMZl5vVx60Z-BPLQ5Ykd_PvSsUNisOw6FNBk1NAyurVFOaw3mFYpqjkgdK5efRS0cJQWr-PQsU"/>
+<div class="absolute bottom-2 left-2 px-2 py-1 bg-primary text-on-primary font-headline font-black text-xs">15</div>
+</div>
+<h4 class="font-headline font-bold text-sm">F. VALVERDE</h4>
+<div class="flex justify-between mt-1">
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Midfielder</span>
+<span class="font-label text-[10px] text-primary">2 G / 6 A</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Standings -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Season Analytics -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-xs font-bold tracking-widest text-on-surface-variant uppercase mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Data Core_
+                    </h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-highest rounded-xl border border-outline-variant/10">
+<span class="text-[9px] font-label text-on-surface-variant uppercase">LALIGA POS.</span>
+<div class="font-headline text-4xl font-bold text-primary mt-1">01</div>
+<div class="w-full h-1 bg-primary/10 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-xl border border-outline-variant/10">
+<span class="text-[9px] font-label text-on-surface-variant uppercase">WIN RATE</span>
+<div class="font-headline text-4xl font-bold text-on-surface mt-1">82<span class="text-lg">%</span></div>
+<div class="w-full h-1 bg-primary/10 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-xl border border-outline-variant/10">
+<span class="text-[9px] font-label text-on-surface-variant uppercase">CLEAN SHEETS</span>
+<div class="font-headline text-4xl font-bold text-on-surface mt-1">12</div>
+<div class="w-full h-1 bg-primary/10 rounded-full mt-3 overflow-hidden">
+<div class="h-full bg-primary w-[40%]"></div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-highest rounded-xl border border-outline-variant/10">
+<span class="text-[9px] font-label text-on-surface-variant uppercase">TOP SCORER</span>
+<div class="font-headline text-xl font-bold text-on-surface mt-1 uppercase">VINI JR</div>
+<span class="text-[10px] font-label text-primary">12 GOALS</span>
+</div>
+</div>
+</div>
+<!-- Competition Standings -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<h3 class="font-headline text-xs font-bold tracking-widest text-on-surface-variant uppercase mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Competition Sync_
+                    </h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg border-l-4 border-primary">
+<div class="flex items-center gap-3">
+<img alt="La Liga" data-alt="La Liga official badge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr5ev-66DvTWHnKhYp0D5PJ9p8vutpQ8b-vPNA7FRTq4mFJ4hp4MBkfLN2hxggEN1dU6mmARETeEZu4sY-LPaTgqtarSaP3xY7YjVYUKwctumyOEng7TxHBjFV0NhvcFKNDKAXmUkrq9dkDuFrb3NkfakA9zg-780f3dQSt3AEYDlf_UOfwL_AwcNYl_LFnRroN0FobOlajPsjErceHTPh_A17j-11uGfuQxdoq4yPPvofBwp48RRLyZYqzL5as5qTeKRAP8OCoMM"/>
+<div>
+<p class="font-headline text-sm font-bold">LA LIGA</p>
+<p class="text-[9px] font-label text-on-surface-variant">MD 24 / 38</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline text-xl font-bold text-primary">1st</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg">
+<div class="flex items-center gap-3">
+<img alt="UCL" data-alt="Champions League official trophy icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2TvygRflsFgMF_rt_mpz2eeqaUR-EVfolQtsNbsGlHpTIiS3PX0b05SIVRZ-iFLbutKWhIJiLlK1G-qtuG3AWVErBUtjRAueMwhd8qdHVCbwrsxHzqm4MzCoYqV63T-s6GHzqW0sGrEA5vcTnHihJlvJ8moI3ISWoteX1kBOnH112isKpqLZlY4H3TLwbYt48EmwiFEilvPxabiN0cvrQ0pnAJuR_0Sx34OxvXEMJC_zOXvx2AnKxRylDk4iOOo5hdlNp0BD6Jr8"/>
+<div>
+<p class="font-headline text-sm font-bold">CHAMPIONS LEAGUE</p>
+<p class="text-[9px] font-label text-on-surface-variant">KNOCKOUT PHASE</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline text-sm font-bold bg-surface-container-highest px-3 py-1 rounded">QUARTERS</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-high rounded-lg">
+<div class="flex items-center gap-3">
+<img alt="Copa del Rey" data-alt="Copa del Rey royal crown icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzssjtLU6gmBpdWYrCiPNkPn3_Lrtni6bfI2gfLSV9DlzZINpyzYXkRkmMRlFcKS_aqFh0kNxJyzoTTow95QI9HFI8fIe98mUACVev_Xy_5D6imhQlZtEWdSbEQTHVEFhr3Q2w7kQcAk3uovWC6wbMjqkGbABO5eO4eTPu4z5oHHuekqbX3_QL6YwSLpgVn69lgfw10FUNCkEpDEnRoLwEW8wACQ_LdD7wnAvjLHE3x7bGOlhZ8x3VgXPpLRV474ofgnLikWpMjMQ"/>
+<div>
+<p class="font-headline text-sm font-bold">COPA DEL REY</p>
+<p class="text-[9px] font-label text-on-surface-variant">ELIMINATED</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline text-sm font-bold text-on-surface-variant">ROUND 16</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ad/CTA Section -->
+<div class="relative rounded-xl overflow-hidden p-8 bg-[#00440a] border border-primary/20">
+<div class="relative z-10">
+<h4 class="font-headline text-2xl font-bold leading-tight mb-4">MADRIDISTA PREMIUM PASS</h4>
+<p class="text-xs font-body opacity-80 mb-6">Access exclusive locker room footage, priority tickets, and dev-tier analytics.</p>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded font-headline font-bold text-xs uppercase tracking-wider">UPGRADE NOW</button>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[120px] rotate-12">verified</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-[#0c0e0f]/80 backdrop-blur-2xl z-50 rounded-t-xl shadow-[0_-10px_30px_rgba(0,0,0,0.5)] border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/40 font-['Lexend'] text-[10px] uppercase font-medium">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span>Matches</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/40 font-['Lexend'] text-[10px] uppercase font-medium">
+<span class="material-symbols-outlined">emoji_events</span>
+<span>Leagues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/40 font-['Lexend'] text-[10px] uppercase font-medium">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#9cff93] bg-[#9cff93]/10 rounded-xl px-4 py-1 font-['Lexend'] text-[10px] uppercase font-medium">
+<span class="material-symbols-outlined">groups</span>
+<span>Squad</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/40 font-['Lexend'] text-[10px] uppercase font-medium">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</div>
+</nav>
+</body></html>

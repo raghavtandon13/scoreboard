@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Leagues &amp; Standings | Kinetic Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;family=Lexend:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#1d2021",
+              "tertiary-container": "#c2dcff",
+              "primary-dim": "#00ec3b",
+              "on-surface": "#f6f6f7",
+              "surface-container-lowest": "#000000",
+              "surface-container": "#181a1b",
+              "error-dim": "#d7383b",
+              "inverse-primary": "#006f16",
+              "on-error": "#490006",
+              "secondary-fixed-dim": "#c9d4f0",
+              "on-secondary-fixed-variant": "#515c73",
+              "tertiary": "#dbe9ff",
+              "on-tertiary-fixed-variant": "#3f5875",
+              "surface": "#0c0e0f",
+              "surface-tint": "#9cff93",
+              "on-tertiary-container": "#354e6b",
+              "error-container": "#9f0519",
+              "on-primary-container": "#005a10",
+              "surface-variant": "#232628",
+              "on-secondary-container": "#c5d0ec",
+              "on-primary-fixed-variant": "#006513",
+              "primary-fixed-dim": "#00ec3b",
+              "on-surface-variant": "#aaabac",
+              "primary": "#9cff93",
+              "on-secondary": "#475269",
+              "surface-dim": "#0c0e0f",
+              "tertiary-dim": "#b4cef0",
+              "on-background": "#f6f6f7",
+              "surface-container-highest": "#232628",
+              "on-tertiary-fixed": "#223c57",
+              "tertiary-fixed": "#c2dcff",
+              "primary-fixed": "#00fc40",
+              "inverse-on-surface": "#545556",
+              "surface-bright": "#292c2e",
+              "on-primary": "#006413",
+              "background": "#0c0e0f",
+              "inverse-surface": "#f9f9fa",
+              "secondary-dim": "#c9d4f0",
+              "secondary-container": "#3c475d",
+              "on-error-container": "#ffa8a3",
+              "on-primary-fixed": "#00440a",
+              "outline-variant": "#464849",
+              "on-secondary-fixed": "#353f56",
+              "error": "#ff716c",
+              "tertiary-fixed-dim": "#b4cef0",
+              "outline": "#747577",
+              "secondary-fixed": "#d7e2ff",
+              "surface-container-low": "#111415",
+              "primary-container": "#00fc40",
+              "secondary": "#d7e2ff",
+              "on-tertiary": "#3e5774"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #0c0e0f;
+        color: #f6f6f7;
+        font-family: 'Inter', sans-serif;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_0_32px_rgba(246,246,247,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#9cff93]" data-icon="terminal">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold tracking-tighter uppercase text-xl font-black text-[#9cff93] tracking-widest">KINETIC TERMINAL</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-[#f6f6f7] hover:bg-[#9cff93]/10 p-2 rounded-xl transition-colors duration-200" data-icon="search">search</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="User Profile" data-alt="User profile avatar icon placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoouAU6W65w634cjSsY5oI22t4HY8UXz3KbUWsJ_unR8nIV50RxFZ5zFSSGAUv1-_tbfu-az0NsS7OrXEpxZki5lnpzQXlqAiOzfz9B97RHMcI6Jp5o_pTKpgBcj-DaxLXLNy5DugE6NQCnfk3r9rk8EJgJsEqCqb0TOsDpTpvSIwZKLSyeV5MDHBMt2qEK2KOV_wZBQwuZQ-t7mmdKuG0ZvldfxD-9nA30F_sA1MqWIQ3YihbiNpQbW-fdcYlVHi64RuejTjIWB4"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- League Selector Chips (Horizontal Scroll) -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Leagues</h2>
+<button class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-1">
+                    Season 23/24 <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 bg-primary text-on-primary px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                    Premier League
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-all">
+                    La Liga
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-all">
+                    Bundesliga
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-all">
+                    Serie A
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-all">
+                    Ligue 1
+                </button>
+<button class="flex-shrink-0 bg-surface-container-highest text-on-surface-variant hover:bg-surface-bright px-5 py-2 rounded-xl font-label text-sm font-medium flex items-center gap-2 transition-all">
+                    MLS
+                </button>
+</div>
+</section>
+<!-- Search & Quick Actions -->
+<div class="mb-6 flex flex-col md:flex-row gap-4 md:items-center justify-between">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-3 pl-12 pr-4 text-sm font-body focus:ring-1 focus:ring-primary/40 placeholder:text-on-surface-variant/50" placeholder="Filter teams..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest p-3 rounded-xl flex items-center gap-2 text-sm font-label text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+                    Advanced
+                </button>
+<button class="bg-surface-container-highest p-3 rounded-xl flex items-center gap-2 text-sm font-label text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-lg" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Standings Table Container -->
+<div class="bg-surface-container-low rounded-2xl overflow-hidden shadow-2xl">
+<!-- Table Header -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 bg-surface-container-high border-b border-outline-variant/10 items-center">
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold">Pos</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold">Club</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">P</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">W</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">D</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">L</div>
+<div class="hidden md:block font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">GD</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-center">Pts</div>
+<div class="font-label text-[10px] uppercase text-on-surface-variant font-bold text-right pr-2">Form</div>
+</div>
+<!-- Table Rows -->
+<div class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors group">
+<div class="font-headline text-lg font-bold text-primary italic">01</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Manchester City club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAegnUxbSFO8DmD1_HoTq3r6bQ1vDqUzclM5i_jLWciJvNDLKVfBr_2tredopv8j-HYKpce9OAw492_O_P9XbOP0vicM-A6tCMVhFEc5MEcfe6vtOxmKPSOyNAFH0O3EBofB_6GQ9aIciyXefaFerf8NXEyqqirFsBmoXWrIcE-R_MkSzP01_qlPaiqxpj1-gJP1k8dHgN_LHhuUZGfNM7T7GgluWSrg-E_D1c_ppvbj4rJOlnWFMPaz-u7Hn_CxzvNEmsGdPTOnwE"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Manchester City</span>
+</div>
+<div class="font-label text-sm text-center">28</div>
+<div class="font-label text-sm text-center">21</div>
+<div class="font-label text-sm text-center">4</div>
+<div class="font-label text-sm text-center">3</div>
+<div class="hidden md:block font-label text-sm text-center text-primary-dim">+42</div>
+<div class="font-headline font-bold text-center">67</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors">
+<div class="font-headline text-lg font-bold text-on-surface/80 italic">02</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Liverpool FC club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFHHOiYhc9vIBwaQH3p0C9nMI2BQuxN8WId6UzoUjOmqabEEG1rOK9zRm-1OzBwZ33lgFJVyjPyE_WeZMdIlZSLtBPB31YNJFDMa8sN8E55V6bo4bWIFGY8RW0YhUMzqhSmYJdpVk_pLP0URgod17E_q9t-urGVVksK8hy1Fj_2Yhi8jHnQvNmRg6Tp66O1k5Nj1leyeqsgVBOcN-RsyjIsXbH2mU0k1O496OoGX4dbHuvmaenGEQFFtAsu-F54j_RlaFilrUXG3M"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Liverpool</span>
+</div>
+<div class="font-label text-sm text-center">28</div>
+<div class="font-label text-sm text-center">20</div>
+<div class="font-label text-sm text-center">5</div>
+<div class="font-label text-sm text-center">3</div>
+<div class="hidden md:block font-label text-sm text-center text-primary-dim">+38</div>
+<div class="font-headline font-bold text-center">65</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors">
+<div class="font-headline text-lg font-bold text-on-surface/80 italic">03</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Arsenal FC club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd6vb6xZu4oYGRn406jlXaa-IqQM6KOkN9MD8AC5enO9VD5Z6-Q9s2bLolu_5Jg0NAzngqBrB1YNyQJICinaPVbfUbnMNL1TpMUeAmFrKesjWWDbnyDoyqyFahO0QocfmfhfGjRNKHTc3KsRGgbF8721_DDlFccfyHNj87keEHQOOY9X_05we0ZnxYpX0SpyhsxAlCQa54MSYBHjnmeagY_RxYqSOFWGf0wGnsrjlJFzVuf_bND8zJzSERRKcf3ATAyco-Wuuxwvw"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Arsenal</span>
+</div>
+<div class="font-label text-sm text-center">28</div>
+<div class="font-label text-sm text-center">19</div>
+<div class="font-label text-sm text-center">6</div>
+<div class="font-label text-sm text-center">3</div>
+<div class="hidden md:block font-label text-sm text-center text-primary-dim">+35</div>
+<div class="font-headline font-bold text-center">63</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors border-b-2 border-primary/20">
+<div class="font-headline text-lg font-bold text-on-surface/80 italic">04</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Aston Villa club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlcR1TEmf7vrxDcDTBWOMR-oOCCb2ofFNBsvSQgrfUMmYPYF8Oge2lJ-EPORrWJfSowww30ZnS2oJui9PTnECgdMZmmonAiDyou_YWIBWJ8vBQnf0VFnPEfZ0X7O4Wggx2G6U1Z66X0Jl9LNPlEP_V65kOe-fyKzQeIQQaUxvywoTl4OhxA3N3L7gqEO8LpenbDde6JchjJG8fCqS4m8oeVK554LjnS9O-auWS_2sPl01UBF1PdMVBzAWNK0lkdOjeA0cKXrRC-eI"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Aston Villa</span>
+</div>
+<div class="font-label text-sm text-center">28</div>
+<div class="font-label text-sm text-center">17</div>
+<div class="font-label text-sm text-center">4</div>
+<div class="font-label text-sm text-center">7</div>
+<div class="hidden md:block font-label text-sm text-center text-primary-dim">+16</div>
+<div class="font-headline font-bold text-center">55</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-error-dim"></span>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors">
+<div class="font-headline text-lg font-bold text-on-surface/80 italic">05</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Tottenham Hotspur club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBddTFsS2k9XfqL5ZQPclcsi45r2IplM54lfqQZKouqIGOVO3yVB2jNqpT6lv0OnSU0ccwXPUnTj8qYMfpqxL_6mwjJM7_pRgae_lElWV4ZULf_hPaL6dFutCZcvPAfBjjZlj3Wuj0JP7dgzb3RhtPvXAs_Vtqs8wY7oDntOz-zoK_p9GhdxFgzKlIvEZN78St7m-Xc1GawMgrhxvElmTIN3eJZY04J5BR56bLoSUa464RNbkEQe4Cqzkn6Sz_LMYSAcyDvbCNsgTM"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Tottenham</span>
+</div>
+<div class="font-label text-sm text-center">27</div>
+<div class="font-label text-sm text-center">16</div>
+<div class="font-label text-sm text-center">5</div>
+<div class="font-label text-sm text-center">6</div>
+<div class="hidden md:block font-label text-sm text-center text-primary-dim">+20</div>
+<div class="font-headline font-bold text-center">53</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-error-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+</div>
+</div>
+<!-- Row 6 -->
+<div class="grid grid-cols-[3rem_1fr_repeat(5,3rem)_7rem] md:grid-cols-[4rem_1fr_repeat(6,4rem)_10rem] p-4 items-center hover:bg-surface-bright/20 transition-colors">
+<div class="font-headline text-lg font-bold text-on-surface/80 italic">06</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Team Logo" data-alt="Manchester United club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8toek9bfGQdccvqZT1Xa8YQ2xcuUq1J9teg671xiltAtwMK2XAQiikXS5EadBeJ-Lz5b_iLLx4FFCJEatWvc2895-_Kg0y6P4ovb70JXMn8NBrfTqaHHmnZss4ObT-c0x6fB3hb50_SH0aASbdQwj35qaqpNgU0jot88Dvx9RADbTUOHSh6TbyNhIs2hmxHfLvtYVyFTdcKsjO4WUz4swnOKKJSs-W31EbXCPZzV-9R8_sVcelSl3N3BS2dpGOh7F9PHpxj-S_do"/>
+</div>
+<span class="font-body font-bold text-sm md:text-base truncate">Man United</span>
+</div>
+<div class="font-label text-sm text-center">28</div>
+<div class="font-label text-sm text-center">15</div>
+<div class="font-label text-sm text-center">2</div>
+<div class="font-label text-sm text-center">11</div>
+<div class="hidden md:block font-label text-sm text-center text-on-surface-variant">0</div>
+<div class="font-headline font-bold text-center">47</div>
+<div class="flex justify-end gap-1.5 pr-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-error-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-error-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-dim"></span>
+</div>
+</div>
+</div>
+<!-- Table Footer Legend -->
+<div class="p-4 bg-surface-container border-t border-outline-variant/10 flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-primary/40"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Champions League</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-secondary-container"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Europa League</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-sm bg-error-container/40"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Relegation</span>
+</div>
+</div>
+</div>
+<!-- Secondary Insights (Asymmetric Layout) -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-high rounded-2xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-9xl" data-icon="insights">insights</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-4">Stat Leaders</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase mb-1">Top Scorer</p>
+<p class="font-body font-bold">Erling Haaland</p>
+<p class="font-headline text-2xl font-black text-primary">23 <span class="text-xs font-medium text-on-surface-variant">Goals</span></p>
+</div>
+<div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase mb-1">Most Assists</p>
+<p class="font-body font-bold">Ollie Watkins</p>
+<p class="font-headline text-2xl font-black text-primary">12 <span class="text-xs font-medium text-on-surface-variant">Ast</span></p>
+</div>
+<div class="hidden sm:block">
+<p class="font-label text-[10px] text-on-surface-variant uppercase mb-1">Clean Sheets</p>
+<p class="font-body font-bold">David Raya</p>
+<p class="font-headline text-2xl font-black text-primary">10 <span class="text-xs font-medium text-on-surface-variant">CS</span></p>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 rounded-2xl p-6 border border-primary/10 flex flex-col justify-between">
+<div>
+<h3 class="font-headline text-xl font-bold mb-2">Next Matchday</h3>
+<p class="text-on-surface-variant text-sm mb-4">Matchday 29 starts in 3 days.</p>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-xl font-label text-xs uppercase font-bold tracking-widest flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                    View Schedule
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.5)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home_max">home_max</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#9cff93] bg-[#9cff93]/10 rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Leagues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="rss_feed">rss_feed</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Profile</span>
+</a>
+</nav>
+<!-- Desktop Sidebar/Nav Overlay (Simulated via Top Bar Cluster but shown for layout logic) -->
+<div class="hidden md:flex fixed left-0 top-0 h-full w-20 bg-surface-container-lowest flex-col items-center py-8 gap-10 z-40">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="home_max">home_max</span>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="leaderboard" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="rss_feed">rss_feed</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer" data-icon="settings">settings</span>
+</div>
+</body></html>

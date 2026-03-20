@@ -1,40 +1,48 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 
-import "../index.css";
-import Header from "@/components/header";
+import "@scoreboard/ui/globals.css";
+import BottomNav from "@/components/kinetic-bottom-nav";
+import Header from "@/components/kinetic-header";
 import Providers from "@/components/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "scoreboard",
-  description: "scoreboard",
+    title: "Kinetic Terminal | Live Football Scores",
+    description:
+        "Advanced tactical data and real-time football scores. Live match tracking, league standings, and team analytics.",
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#0c0e0f",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Providers>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
-            <Header />
-            {children}
-          </div>
-        </Providers>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" className="dark" suppressHydrationWarning>
+            <head>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=Lexend:wght@300..700&display=swap"
+                    rel="stylesheet"
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+                    rel="stylesheet"
+                />
+            </head>
+            <body className="bg-background text-foreground antialiased">
+                <Providers>
+                    <Header />
+                    <main className="mx-auto max-w-7xl px-4 pt-24 pb-32 md:px-8">
+                        {children}
+                    </main>
+                    <BottomNav />
+                </Providers>
+            </body>
+        </html>
+    );
 }

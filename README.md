@@ -1,113 +1,187 @@
-# scoreboard
+# ⚡ ScoreBoard — Live Football Scoreboard
 
-This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Hono, TRPC, and more.
+> A real-time football scoreboard with a sleek dark UI aesthetic. Track live matches, standings, team stats, and player statistics across top European leagues.
 
-## Features
+![Desktop View](./assets/desktop.jpeg)
 
-- **TypeScript** - For type safety and improved developer experience
-- **Next.js** - Full-stack React framework
-- **TailwindCSS** - Utility-first CSS for rapid UI development
-- **Shared UI package** - shadcn/ui primitives live in `packages/ui`
-- **Hono** - Lightweight, performant server framework
-- **tRPC** - End-to-end type-safe APIs
-- **Bun** - Runtime environment
-- **Drizzle** - TypeScript-first ORM
-- **SQLite/Turso** - Database engine
-- **Authentication** - Better-Auth
-- **Biome** - Linting and formatting
-- **PWA** - Progressive Web App support
-- **Turborepo** - Optimized monorepo build system
+## ✨ Features
 
-## Getting Started
+### Live Match Tracking
 
-First, install the dependencies:
+- **Real-time scores** with live match status indicators
+- **Match details** including events, lineups, statistics, and head-to-head records
+- **Auto-refresh** with smart caching to minimize API calls
+
+### League Standings
+
+- **Complete league tables** for Premier League, La Liga, Bundesliga, Serie A, Ligue 1, and Champions League
+- **Form indicators** showing recent team performance
+- **Sortable statistics** — points, wins, draws, losses, goal difference
+
+### Team & Player Stats
+
+- **Team profiles** with squad information and venue details
+- **Player statistics** including top scorers and assists
+- **Recent match history** for every team
+
+### Progressive Web App
+
+- **Installable** on desktop and mobile devices
+- **Offline-capable** with cached data
+- **Responsive design** — native feel on any screen size
+
+![Mobile View](./assets/mobile.jpeg)
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+| Library            | Purpose                         |
+| ------------------ | ------------------------------- |
+| **Next.js 16**     | React framework with App Router |
+| **Tailwind CSS 4** | Utility-first styling           |
+| **shadcn/ui**      | Accessible component primitives |
+| **TanStack Query** | Async state management          |
+| **tRPC**           | End-to-end type-safe API calls  |
+
+### Backend
+
+| Library            | Purpose                             |
+| ------------------ | ----------------------------------- |
+| **Hono**           | Lightweight API server              |
+| **tRPC**           | Type-safe API layer                 |
+| **Drizzle ORM**    | TypeScript-first database ORM       |
+| **SQLite + Turso** | Local database with edge deployment |
+| **Better-Auth**    | Authentication framework            |
+
+### Developer Experience
+
+| Library          | Purpose                        |
+| ---------------- | ------------------------------ |
+| **TypeScript**   | Full type safety               |
+| **Bun**          | Fast runtime & package manager |
+| **Turborepo**    | Monorepo build optimization    |
+| **Biome**        | Linting & formatting           |
+| **API-Football** | Football data provider         |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh) runtime
+- API key from [API-Football](https://api-football.com/)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/scoreboard.git
+cd scoreboard
+
+# Install dependencies
 bun install
-```
 
-## Database Setup
+# Configure environment
+cp apps/server/.env.example apps/server/.env
+# Add your API_FOOTBALL_KEY to apps/server/.env
 
-This project uses SQLite with Drizzle ORM.
-
-1. Start the local SQLite database (optional):
-
-```bash
-bun run db:local
-```
-
-2. Update your `.env` file in the `apps/server` directory with the appropriate connection details if needed.
-
-3. Apply the schema to your database:
-
-```bash
+# Push database schema
 bun run db:push
-```
 
-Then, run the development server:
-
-```bash
+# Start development servers
 bun run dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
-The API is running at [http://localhost:3000](http://localhost:3000).
+### Environment Variables
 
-## UI Customization
+Create `apps/server/.env`:
 
-React web apps in this stack share shadcn/ui primitives through `packages/ui`.
-
-- Change design tokens and global styles in `packages/ui/src/styles/globals.css`
-- Update shared primitives in `packages/ui/src/components/*`
-- Adjust shadcn aliases or style config in `packages/ui/components.json` and `apps/web/components.json`
-
-### Add more shared components
-
-Run this from the project root to add more primitives to the shared UI package:
-
-```bash
-npx shadcn@latest add accordion dialog popover sheet table -c packages/ui
+```env
+BETTER_AUTH_SECRET=your-32-char-secret
+BETTER_AUTH_URL=http://localhost:3000
+CORS_ORIGIN=http://localhost:3001
+DATABASE_URL=file:../../local.db
+API_FOOTBALL_KEY=your-api-key
 ```
 
-Import shared components like this:
-
-```tsx
-import { Button } from "@scoreboard/ui/components/button";
-```
-
-### Add app-specific blocks
-
-If you want to add app-specific blocks instead of shared primitives, run the shadcn CLI from `apps/web`.
-
-## Git Hooks and Formatting
-
-- Format and lint fix: `bun run check`
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 scoreboard/
 ├── apps/
-│   ├── web/         # Frontend application (Next.js)
-│   └── server/      # Backend API (Hono, TRPC)
+│   ├── web/              # Next.js frontend (port 3001)
+│   │   ├── src/
+│   │   │   ├── app/     # App Router pages
+│   │   │   ├── components/  # Page-specific components
+│   │   │   └── utils/   # Client utilities
+│   │   └── public/      # Static assets
+│   └── server/          # Hono API server (port 3000)
+│       ├── src/
+│       │   ├── index.ts # Server entry point
+│       │   └── cache/   # Disk cache for API responses
+│       └── .cache/      # Cached API responses
 ├── packages/
-│   ├── ui/          # Shared shadcn/ui components and styles
-│   ├── api/         # API layer / business logic
-│   ├── auth/        # Authentication configuration & logic
-│   └── db/          # Database schema & queries
+│   ├── api/             # tRPC routers & business logic
+│   │   └── src/
+│   │       ├── routers/ # API endpoints
+│   │       └── lib/     # API client & caching
+│   ├── auth/            # Better-Auth configuration
+│   ├── db/              # Drizzle schema & queries
+│   ├── env/             # Environment validation
+│   └── ui/              # Shared shadcn/ui components
+└── assets/              # Screenshots & images
 ```
 
-## Available Scripts
+## 🔌 API Endpoints
 
-- `bun run dev`: Start all applications in development mode
-- `bun run build`: Build all applications
-- `bun run dev:web`: Start only the web application
-- `bun run dev:server`: Start only the server
-- `bun run check-types`: Check TypeScript types across all apps
-- `bun run db:push`: Push schema changes to database
-- `bun run db:generate`: Generate database client/types
-- `bun run db:migrate`: Run database migrations
-- `bun run db:studio`: Open database studio UI
-- `bun run db:local`: Start the local SQLite database
-- `bun run check`: Run Biome formatting and linting
-- `cd apps/web && bun run generate-pwa-assets`: Generate PWA assets
+The tRPC API provides:
+
+| Endpoint                    | Description                   |
+| --------------------------- | ----------------------------- |
+| `football.liveFixtures`     | All currently live matches    |
+| `football.standings`        | League standings by season    |
+| `football.fixturesByLeague` | Fixtures by league and season |
+| `football.fixtureById`      | Single match details          |
+| `football.teamById`         | Team information              |
+| `football.teamSquad`        | Team squad/roster             |
+| `football.topScorers`       | Top scorers by league         |
+| `football.popularLeagues`   | Top European leagues          |
+
+## 💾 Caching Strategy
+
+To optimize API usage (100 requests/day on free tier), all responses are cached to disk:
+
+| Data Type     | Cache TTL  |
+| ------------- | ---------- |
+| Live Fixtures | 15 seconds |
+| Fixtures      | 60 seconds |
+| Standings     | 1 hour     |
+| Teams         | 24 hours   |
+| Leagues       | 24 hours   |
+| Player Stats  | 6 hours    |
+
+## 🎨 Design System
+
+**ScoreBoard** theme features:
+
+- Dark surfaces with neon green (`#9ff93`) accents
+- Space Grotesk + Lexend typography
+- Material Symbols icons
+- Glass-morphism effects
+- Smooth micro-animations
+
+## 📦 Available Scripts
+
+```bash
+bun run dev          # Start all apps (web + server)
+bun run dev:web      # Start only Next.js
+bun run dev:server   # Start only API server
+bun run build        # Production build
+bun run check        # Format & lint
+bun run check-types # TypeScript validation
+bun run db:studio    # Open Drizzle Studio
+```
+
+## 📄 License
+
+MIT License — feel free to use and modify for your own projects.

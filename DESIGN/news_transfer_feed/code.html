@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Terminal | News &amp; Transfers</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "surface-container-high": "#1d2021",
+                "tertiary-container": "#c2dcff",
+                "primary-dim": "#00ec3b",
+                "on-surface": "#f6f6f7",
+                "surface-container-lowest": "#000000",
+                "surface-container": "#181a1b",
+                "error-dim": "#d7383b",
+                "inverse-primary": "#006f16",
+                "on-error": "#490006",
+                "secondary-fixed-dim": "#c9d4f0",
+                "on-secondary-fixed-variant": "#515c73",
+                "tertiary": "#dbe9ff",
+                "on-tertiary-fixed-variant": "#3f5875",
+                "surface": "#0c0e0f",
+                "surface-tint": "#9cff93",
+                "on-tertiary-container": "#354e6b",
+                "error-container": "#9f0519",
+                "on-primary-container": "#005a10",
+                "surface-variant": "#232628",
+                "on-secondary-container": "#c5d0ec",
+                "on-primary-fixed-variant": "#006513",
+                "primary-fixed-dim": "#00ec3b",
+                "on-surface-variant": "#aaabac",
+                "primary": "#9cff93",
+                "on-secondary": "#475269",
+                "surface-dim": "#0c0e0f",
+                "tertiary-dim": "#b4cef0",
+                "on-background": "#f6f6f7",
+                "surface-container-highest": "#232628",
+                "on-tertiary-fixed": "#223c57",
+                "tertiary-fixed": "#c2dcff",
+                "primary-fixed": "#00fc40",
+                "inverse-on-surface": "#545556",
+                "surface-bright": "#292c2e",
+                "on-primary": "#006413",
+                "background": "#0c0e0f",
+                "inverse-surface": "#f9f9fa",
+                "secondary-dim": "#c9d4f0",
+                "secondary-container": "#3c475d",
+                "on-error-container": "#ffa8a3",
+                "on-primary-fixed": "#00440a",
+                "outline-variant": "#464849",
+                "on-secondary-fixed": "#353f56",
+                "error": "#ff716c",
+                "tertiary-fixed-dim": "#b4cef0",
+                "outline": "#747577",
+                "secondary-fixed": "#d7e2ff",
+                "surface-container-low": "#111415",
+                "primary-container": "#00fc40",
+                "secondary": "#d7e2ff",
+                "on-tertiary": "#3e5774"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Lexend"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0c0e0f; }
+        ::-webkit-scrollbar-thumb { background: #232628; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9cff93; }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+        .ticker-animate {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Header / TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_0_32px_rgba(246,246,247,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#9cff93] text-2xl">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold tracking-tighter uppercase text-xl font-black text-[#9cff93] tracking-widest">KINETIC TERMINAL</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 font-label text-[10px] uppercase tracking-widest">
+<a class="text-[#f6f6f7]/60 hover:text-[#9cff93] transition-colors" href="#">Home</a>
+<a class="text-[#f6f6f7]/60 hover:text-[#9cff93] transition-colors" href="#">Leagues</a>
+<a class="text-[#9cff93] flex items-center gap-2" href="#">News <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span></a>
+<a class="text-[#f6f6f7]/60 hover:text-[#9cff93] transition-colors" href="#">Transfers</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest border border-outline-variant/20 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Abstract geometric user avatar profile icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsKxENCxPxCLlCV8MQKSZfxR7q-p9rMOA5ur2JlvJygLkfE3GpCdUxZHzINiQODYq6YK-LwLZDHDQIAhxzbft1mWfe2GH0KYQqODEIgmbIm3y6RjZTlPKGE0oaZeLO9LOwDl456gQatBQ-VUlGKUmrMkgBItoJBi7DEYtO0KHfRvzrb1Nahz24---6WjvVgCz1xKmE9ypoRUn0Tsuiz4NEKYfrvaQNb3uUmGbV0Xu2tYu1gRIiGzM9C7PYqPc3u3bm5AuZb9sufjM"/>
+</div>
+</div>
+</header>
+<!-- Breaking News Ticker -->
+<div class="fixed top-[72px] w-full bg-surface-container-lowest py-2 border-y border-outline-variant/10 overflow-hidden z-40">
+<div class="flex items-center">
+<div class="bg-error-container text-on-error-container font-label text-[10px] font-bold px-3 py-1 z-10 uppercase tracking-tighter flex items-center gap-2 mr-4">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                Breaking
+            </div>
+<div class="ticker-animate flex gap-12 font-label text-xs uppercase tracking-tight text-on-surface-variant">
+<span>• MBAPPÉ TO REAL MADRID: MEDICAL SCHEDULED FOR MONDAY</span>
+<span>• LIVERPOOL TARGETING MIDFIELD REINFORCEMENTS IN BUNDESLIGA</span>
+<span>• MANCHESTER CITY EXTEND CONTRACT FOR MIDFIELD TALENT</span>
+<span>• TRANSFER WINDOW CLOSES IN 48 HOURS: TRACK EVERY MOVE HERE</span>
+<span>• ARSENAL AGREE TERMS WITH SPANISH INTERNATIONAL FORWARD</span>
+</div>
+</div>
+</div>
+<main class="mt-[116px] pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hot This Week: Hero Section (Bento Style) -->
+<section class="py-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-3xl font-black uppercase tracking-tighter">HOT <span class="text-primary italic">THIS WEEK</span></h2>
+<button class="font-label text-xs uppercase text-primary hover:underline transition-all">View All Rumors</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-auto md:h-[500px]">
+<!-- Main Feature -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-high">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Cinematic wide shot of a futuristic football stadium at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbxNA9Hj7NGX06sZn0vEcXJKnU88QNhrYvRUTWu0IGVWVnuU6XdljAxP5a7e7qymkA9mNtA5ZPfYhmaIOBTKhJ8aPPiVf3yFEpaHYwgh304Vn-kB0JaIyDX2Pqd5iypWiwG498Y-iBduIC2WzSgIe7QemRYI9Q3xV-1bbxuT-KnMUe395s8o8AC212Q6ty4cX7wuPeWoEMXXO7utKhLGtjeL_8-kCgtpypPGYdswuYn5aStXyhld4wm5loBYPv_Q58LY__ExhXAUw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center gap-2 mb-3">
+<span class="bg-primary text-on-primary font-label text-[10px] px-2 py-0.5 rounded uppercase font-bold">Confirmed</span>
+<span class="text-on-surface-variant font-label text-[10px] uppercase">14m ago</span>
+</div>
+<h3 class="font-headline text-4xl font-black text-on-surface uppercase leading-none tracking-tighter max-w-2xl mb-4">THE REVOLUTION: NEW TACTICAL ERA BEGINS IN MANCHESTER</h3>
+<p class="font-body text-on-surface-variant max-w-xl text-sm leading-relaxed mb-6">Inside the first 24 hours of the new regime. Deep dive into the data-driven approach set to transform the Premier League giants.</p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-md font-label text-xs font-bold uppercase flex items-center gap-2 hover:bg-primary-container transition-colors">
+                                Read Full Analysis
+                            </button>
+<button class="bg-surface-variant/80 backdrop-blur text-on-surface px-4 py-2.5 rounded-md font-label text-xs font-bold uppercase border border-outline-variant/20 hover:bg-surface-bright transition-colors">
+                                Save for later
+                            </button>
+</div>
+</div>
+</div>
+<!-- Secondary Features Stack -->
+<div class="md:col-span-4 flex flex-col gap-4">
+<div class="flex-1 relative overflow-hidden rounded-xl bg-surface-container-high group">
+<img class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-500" data-alt="Action shot of a football player celebrating a goal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbu1R4pm17Lubi9GqiNoAHDAe3PHWkxl1wJ8PDZH3jrgOJ8s34fjpgUrv6tbKfdgjutQ64WMl6o0NHDo4gxcCcVvbdEhG_9FGGDIxsxJSprXqcuqyF6arkBOJJYc78wwu_1pGMD5ETCBdU7Jnw6iXF4IEGAY_cBVcvS3FZ98ESWGhMAfNYuzDGqFP0GNj-aGIPuomNFCbt8YZQs6coos6c_ng_IDYtBYXmrxN7D2ULYlzTwOUzkBprZ1g5DQ4V9gn4aaHfu24AnbM"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low to-transparent"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-primary font-label text-[10px] uppercase tracking-widest mb-1 font-bold">Transfer Rumor</span>
+<h4 class="font-headline text-xl font-bold uppercase tracking-tight">Catalan Giants eye Bundesliga Wonderkid</h4>
+</div>
+</div>
+<div class="flex-1 relative overflow-hidden rounded-xl bg-surface-container-high group">
+<img class="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-500" data-alt="Macro shot of a soccer ball on a grass pitch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRnKLke-z5cZMNF4FmIjjsy7NTkSLaTaRcsZ6AhKV4c-RuYGVPAADMTos4jcM7LUMosFrg1-Tuyrhi2NDu55OHkmw58DoxmGq8LgcOdZOd88ACiF5OJtO_CISn1-dtCN6tgtm1hSZ0EwwOsTNo9us1aq8WPbgyzS83JiUW0jLI9PWlidzBTUqavns-57X8k3hR0WbUFdFI2HsuMpY_1eEYwtBTgosuyEOAjWLnn26U0IBesWz7Fu7YskYLtZ4PtzmjucS1VNt5lTU"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low to-transparent"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<span class="text-tertiary font-label text-[10px] uppercase tracking-widest mb-1 font-bold">Injury Update</span>
+<h4 class="font-headline text-xl font-bold uppercase tracking-tight">Top Scorer sidelined for 6 weeks</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Fast Feed & Data Center -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-12 border-t border-outline-variant/10">
+<!-- Latest News Feed (Scroll Focus) -->
+<div class="lg:col-span-8 space-y-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h3 class="font-headline text-2xl font-black uppercase tracking-tighter">THE FEED</h3>
+<div class="flex gap-2">
+<span class="bg-surface-variant text-on-surface-variant font-label text-[10px] px-3 py-1 rounded-full border border-outline-variant/20 hover:border-primary/50 transition-colors cursor-pointer">LATEST</span>
+<span class="bg-surface-container-highest text-on-surface-variant font-label text-[10px] px-3 py-1 rounded-full border border-outline-variant/20 hover:border-primary/50 transition-colors cursor-pointer">TRANSFERS</span>
+<span class="bg-surface-container-highest text-on-surface-variant font-label text-[10px] px-3 py-1 rounded-full border border-outline-variant/20 hover:border-primary/50 transition-colors cursor-pointer">PREMIER LEAGUE</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<!-- News Item 1 -->
+<div class="group grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+<div class="aspect-video md:aspect-square rounded-lg overflow-hidden bg-surface-container-high border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="High quality close up of a football jersey fabric texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKSg00DdUJRdCdQ74S4y13s0_yDyGh9FjYD4P_xMSp3mH1xgZwCojK1p4NKsPCXO2jjSk6X2F_DozjmeGmCkGP8wNcaql1xOjADG35FbJvlRH4OtocGDt2m8-hhAuGv5jL6S5Geh4wYTN54kTu4qZNofEonBKTHb_FXzcJnojYOyNUHELAFBYMK1Mv28Mb4Nraf4kfGtGirbB8QAR1kCNmRNByifEdTLmiaU3lHPuAj0Nc0wLsazgKp7CwUaWrcWd6o--sCsJ-1Y"/>
+</div>
+<div class="md:col-span-3">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label text-[10px] text-primary uppercase font-bold tracking-widest">Exclusive</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">32 Minutes Ago</span>
+</div>
+<h4 class="font-headline text-2xl font-bold uppercase tracking-tight leading-7 group-hover:text-primary transition-colors cursor-pointer">Financial Fair Play: Top 5 Clubs under investigation for sponsorship deals</h4>
+<p class="mt-3 text-on-surface-variant text-sm leading-relaxed line-clamp-2">Detailed documents reveal potential inconsistencies in multi-million pound commercial agreements spanning the last three seasons. Experts weigh in on the possible sanctions.</p>
+<div class="mt-4 flex items-center gap-6">
+<span class="flex items-center gap-1.5 font-label text-[10px] text-on-surface-variant uppercase"><span class="material-symbols-outlined text-sm">comment</span> 124</span>
+<span class="flex items-center gap-1.5 font-label text-[10px] text-on-surface-variant uppercase"><span class="material-symbols-outlined text-sm">share</span> Share</span>
+</div>
+</div>
+</div>
+<!-- News Item 2 (Transfer Focus) -->
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">sync_alt</span>
+<span class="font-label text-xs uppercase font-bold text-on-surface">Transfer Alert: Confirmed</span>
+</div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">1 Hour Ago</span>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex-1">
+<h4 class="font-headline text-xl font-bold uppercase tracking-tight">João Neves joins PSG in €70m deal</h4>
+<p class="text-sm text-on-surface-variant mt-1 italic">Benfica academy product signs five-year contract in the French capital.</p>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center p-2">
+<span class="material-symbols-outlined text-3xl">sports_soccer</span>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center p-2">
+<span class="material-symbols-outlined text-3xl text-primary">shield</span>
+</div>
+</div>
+</div>
+</div>
+<!-- News Item 3 -->
+<div class="group grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+<div class="aspect-video md:aspect-square rounded-lg overflow-hidden bg-surface-container-high border border-outline-variant/10">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="Tactical chalkboard with football plays drawn in white chalk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Yl9iYHIGyBxF4lubAmOYjlqw7xKvFuUF83PtvHJmYu8urfakLl7TNRB0rsTYU9KwhcnwPhmF1E-BFxPh9A6mIpA-YBbR65FiQ0IqL949V01EPW3AfoXu2EChC343qRcNBr39M28Ki3qrYyr62bYeEkQqVljBIHj5RJWM38uk3pTnjLTdAwM2FwhlTMMiSGVoLZzMuJKbFWq58iAkX1hlpJvLWlfNMxHaQbCB7hjin5q2_bvWiJ8OQ14thRnJJxb7BAjB8grepjc"/>
+</div>
+<div class="md:col-span-3">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label text-[10px] text-on-tertiary-container uppercase font-bold tracking-widest px-2 py-0.5 bg-tertiary-container rounded">Strategy</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">3 Hours Ago</span>
+</div>
+<h4 class="font-headline text-2xl font-bold uppercase tracking-tight leading-7 group-hover:text-primary transition-colors cursor-pointer">The False 9 Evolution: How Pep Guardiola reinvented the position again</h4>
+<p class="mt-3 text-on-surface-variant text-sm leading-relaxed line-clamp-2">A masterclass in space manipulation. We analyze the heatmap data from the last six matches to understand the tactical shift occurring at the top of the table.</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 border border-outline-variant/10 rounded-xl font-label text-xs uppercase tracking-widest text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+                    Load More Intelligence
+                </button>
+</div>
+<!-- Sidebar / Stats Center -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Transfer Tracker Widget -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden shadow-2xl">
+<div class="p-6 bg-surface-container-highest border-b border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold uppercase tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+                            Market Value Gainers
+                        </h3>
+</div>
+<div class="p-2">
+<table class="w-full font-label text-[10px] uppercase">
+<tbody>
+<tr class="border-b border-outline-variant/5">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">L. Yamal</div>
+<div class="text-[9px] text-on-surface-variant">Barcelona</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="text-primary font-bold">€120.00m</div>
+<div class="text-[9px] text-primary-dim">+€30m</div>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/5">
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">K. Mainoo</div>
+<div class="text-[9px] text-on-surface-variant">Man Utd</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="text-primary font-bold">€55.00m</div>
+<div class="text-[9px] text-primary-dim">+€20m</div>
+</td>
+</tr>
+<tr>
+<td class="p-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div>
+<div class="font-bold text-on-surface">A. Guler</div>
+<div class="text-[9px] text-on-surface-variant">Real Madrid</div>
+</div>
+</td>
+<td class="p-4 text-right">
+<div class="text-primary font-bold">€45.00m</div>
+<div class="text-[9px] text-primary-dim">+€15m</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Trending Topics (Asymmetric Chips) -->
+<div class="space-y-4">
+<h3 class="font-headline text-lg font-bold uppercase tracking-tight">Trending Data</h3>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-4 py-2 rounded-lg border border-outline-variant/20 font-label text-[10px] uppercase text-on-surface-variant hover:border-primary cursor-pointer transition-all">#MbappeReal</span>
+<span class="bg-primary/10 text-primary px-4 py-2 rounded-lg border border-primary/20 font-label text-[10px] uppercase font-bold cursor-pointer transition-all">#ChampionsLeague</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-lg border border-outline-variant/20 font-label text-[10px] uppercase text-on-surface-variant hover:border-primary cursor-pointer transition-all">#TransferDeadline</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-lg border border-outline-variant/20 font-label text-[10px] uppercase text-on-surface-variant hover:border-primary cursor-pointer transition-all">#xGAnalysis</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-lg border border-outline-variant/20 font-label text-[10px] uppercase text-on-surface-variant hover:border-primary cursor-pointer transition-all">#TenHag</span>
+</div>
+</div>
+<!-- Newsletter / Terminal Subscription -->
+<div class="bg-primary p-6 rounded-xl text-on-primary relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<h3 class="font-headline text-xl font-black uppercase tracking-tighter mb-2">Subscribe to Terminal Intelligence</h3>
+<p class="font-body text-xs font-medium mb-6 opacity-80">Get the daily transfer briefing directly in your inbox. Data-driven, concise, fast.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-on-primary/10 border border-on-primary/20 rounded px-3 py-2 text-xs font-label text-on-primary placeholder:text-on-primary/40 focus:ring-0 focus:border-on-primary" placeholder="OPERATOR@KINETIC.COM" type="email"/>
+<button class="bg-on-primary text-primary px-4 py-2 rounded font-label text-[10px] font-black uppercase tracking-widest">Connect</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#292c2e]/60 backdrop-blur-xl z-50 rounded-t-xl shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">home_max</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight mt-1">Leagues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#9cff93] bg-[#9cff93]/10 rounded-xl px-4 py-1 ease-out duration-200 transform-gpu" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">rss_feed</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight mt-1">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

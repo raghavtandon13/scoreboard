@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Terminal | Live Scores</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#1d2021",
+              "tertiary-container": "#c2dcff",
+              "primary-dim": "#00ec3b",
+              "on-surface": "#f6f6f7",
+              "surface-container-lowest": "#000000",
+              "surface-container": "#181a1b",
+              "error-dim": "#d7383b",
+              "inverse-primary": "#006f16",
+              "on-error": "#490006",
+              "secondary-fixed-dim": "#c9d4f0",
+              "on-secondary-fixed-variant": "#515c73",
+              "tertiary": "#dbe9ff",
+              "on-tertiary-fixed-variant": "#3f5875",
+              "surface": "#0c0e0f",
+              "surface-tint": "#9cff93",
+              "on-tertiary-container": "#354e6b",
+              "error-container": "#9f0519",
+              "on-primary-container": "#005a10",
+              "surface-variant": "#232628",
+              "on-secondary-container": "#c5d0ec",
+              "on-primary-fixed-variant": "#006513",
+              "primary-fixed-dim": "#00ec3b",
+              "on-surface-variant": "#aaabac",
+              "primary": "#9cff93",
+              "on-secondary": "#475269",
+              "surface-dim": "#0c0e0f",
+              "tertiary-dim": "#b4cef0",
+              "on-background": "#f6f6f7",
+              "surface-container-highest": "#232628",
+              "on-tertiary-fixed": "#223c57",
+              "tertiary-fixed": "#c2dcff",
+              "primary-fixed": "#00fc40",
+              "inverse-on-surface": "#545556",
+              "surface-bright": "#292c2e",
+              "on-primary": "#006413",
+              "background": "#0c0e0f",
+              "inverse-surface": "#f9f9fa",
+              "secondary-dim": "#c9d4f0",
+              "secondary-container": "#3c475d",
+              "on-error-container": "#ffa8a3",
+              "on-primary-fixed": "#00440a",
+              "outline-variant": "#464849",
+              "on-secondary-fixed": "#353f56",
+              "error": "#ff716c",
+              "tertiary-fixed-dim": "#b4cef0",
+              "outline": "#747577",
+              "secondary-fixed": "#d7e2ff",
+              "surface-container-low": "#111415",
+              "primary-container": "#00fc40",
+              "secondary": "#d7e2ff",
+              "on-tertiary": "#3e5774"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_0_32px_rgba(246,246,247,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#9cff93]" data-icon="terminal">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold tracking-tighter uppercase text-xl font-black text-[#9cff93] tracking-widest">KINETIC TERMINAL</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-6">
+<a class="font-label text-sm uppercase tracking-wider text-[#9cff93] hover:bg-[#9cff93]/10 transition-colors duration-200 px-3 py-1 rounded" href="#">Scores</a>
+<a class="font-label text-sm uppercase tracking-wider text-[#f6f6f7] hover:bg-[#9cff93]/10 transition-colors duration-200 px-3 py-1 rounded" href="#">Analysis</a>
+<a class="font-label text-sm uppercase tracking-wider text-[#f6f6f7] hover:bg-[#9cff93]/10 transition-colors duration-200 px-3 py-1 rounded" href="#">Terminal</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center border border-outline-variant/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar male focused" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAyc508bewskMEVfeKXJkwFk4mr8wfClpkVnDRaS7WmnkDz-5YOPcx85T8kApPYPd68VT1k2U6R54PEQjoOv2jI3ZUyKtCUEAUd1Ms7g5wCMSDAvLSAZzKa-6Ec9drZYVcWSBAclT8arV82hgzUEOft99CQFBK6SfxQP07M3fmKP6sH-zULcO2tzCvd4x2XRiQKt7EgPEdvE1d3aA51IBFoMjeA2DOFl2JQRgM6hSSA0IwlHExgtn_UWTno9VHL9ohR4BSH0rTlz8"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- League Filter -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline text-xs font-bold uppercase tracking-widest text-on-surface-variant">Active Circuits</h2>
+<button class="text-primary text-xs font-label uppercase flex items-center gap-1">
+                    Filter <span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-primary text-on-primary font-label text-xs font-bold uppercase tracking-tight">
+                    All Events
+                </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors font-label text-xs uppercase tracking-tight border border-outline-variant/10">
+                    Premier League
+                </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors font-label text-xs uppercase tracking-tight border border-outline-variant/10">
+                    La Liga
+                </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors font-label text-xs uppercase tracking-tight border border-outline-variant/10">
+                    Champions League
+                </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors font-label text-xs uppercase tracking-tight border border-outline-variant/10">
+                    Bundesliga
+                </button>
+<button class="flex-shrink-0 px-5 py-2 rounded-md bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors font-label text-xs uppercase tracking-tight border border-outline-variant/10">
+                    Serie A
+                </button>
+</div>
+</section>
+<!-- Live Now Section -->
+<section class="mb-12">
+<div class="flex items-center gap-3 mb-6">
+<div class="h-2 w-2 rounded-full bg-error animate-pulse"></div>
+<h2 class="font-headline text-2xl font-bold tracking-tight">LIVE TERMINAL</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Live Match Card 1 -->
+<div class="bg-surface-container-highest rounded-xl p-5 border-l-4 border-primary shadow-xl group cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start mb-6">
+<span class="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Premier League</span>
+<div class="flex items-center gap-2 bg-error-container/20 px-2 py-0.5 rounded">
+<span class="font-label text-[10px] font-bold text-error">74'</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="Manchester City club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkpWDpI38VDBEJ8KHNA3lu8cMwznrZ3i201PlTjF37OPDQKLqT3gmH4nwqbXWyDEbT1JbBoojwQU5FkWYWrJuywS8drJGDfLOBp2SFdiIRpp2qNhxtXB52euUPwWP3aUj7EjUB0B_fsFohaRODgIQFNSTHcIGcRvGDDAg9bXlvxDk89JDMliF_f5G_Vxf4MT3axYm7eA9LBiloqCYHsnDVNu4fN7lIoYNBty_X9kNC2cloGW2g-p--bfvNSd2Jq74wBpU6iS7svgk"/>
+</div>
+<span class="font-body font-semibold text-lg">Man City</span>
+</div>
+<span class="font-headline text-3xl font-black text-primary">2</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="Liverpool FC club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkOkpuq5uHDZxNPuybF-7q1-O8SymczWYyouKBwwjI12yUYoDPjzAFxFBENJOWQDZQzycjH_WwSqNlguAwgAZBtkwyiaMZcN1FiTgN32YnSrRTiRYn6g_vTH4Wcs2jaMCT00--K9sIAUUXDjcaDPykFL_vLse_Auuj34qjf5eBM5dEzrK9XSHi5VDTlQzIja0cdYgkn6HcVf2fMxZrqs7pq5jHLaErwXO7zhOSxBrmurQp_6jZ_K7AX8rD2xU_SBi5e6UB_KBPJYE"/>
+</div>
+<span class="font-body font-semibold text-lg">Liverpool</span>
+</div>
+<span class="font-headline text-3xl font-black text-on-surface-variant">1</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">xG 2.45</span>
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">Poss. 62%</span>
+</div>
+<span class="material-symbols-outlined text-primary-dim text-lg" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+<!-- Live Match Card 2 -->
+<div class="bg-surface-container-highest rounded-xl p-5 border-l-4 border-primary shadow-xl group cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start mb-6">
+<span class="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">La Liga</span>
+<div class="flex items-center gap-2 bg-error-container/20 px-2 py-0.5 rounded">
+<span class="font-label text-[10px] font-bold text-error">42'</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="Real Madrid club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8iMJdHMwYj2u0yqWYE3RyK5Vh1jo9UxC_8E97aTx2LC2_3Oj_k2hmyDOaSUnyfvLA-hF0PXrYIr_T0SnmvzSwSQkeYtEThPeiVYPw77mMcXzkFLOxH44pgCVzCH83bLENW-hGxozpxO00h5pBFVD6za7LyaJgEDL6PEYkACeJLOdXsol2eg6k95ZyMLVr8NvgHeJDw2oMKOG-TuDnGmknzriouzHM_kHXDErShgBqxOG-ML69qsgWBYGWaLLfFGXshM-so_GI3VA"/>
+</div>
+<span class="font-body font-semibold text-lg">Real Madrid</span>
+</div>
+<span class="font-headline text-3xl font-black text-on-surface-variant">0</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="FC Barcelona club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmyO5St_v6KIjmllpy43L2kr594xBkjCJuwUnOI1tU3iduku1ya-8EVI-hCBvToYTvGaZpzr2vvr8rdc5N_ZlOK4o2yQGNbiqtCwwcOAQdq68cMbftshKpmWYtB8-7tWITDSWaTUs_nXjpmKVC_f_KNf_O2roVjfQ_SLcnuRw89WfPLTuu9bj-xSZNp3_5cw-3I1dlhtetlSpkxYoD6eAMKKYB3BlylFxWdJcA7Y4Ohh4C-vJ2OP11P2ERY27Rb7o6mrFpxVXzGkA"/>
+</div>
+<span class="font-body font-semibold text-lg">Barcelona</span>
+</div>
+<span class="font-headline text-3xl font-black text-on-surface-variant">0</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">xG 0.88</span>
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">Poss. 48%</span>
+</div>
+<span class="material-symbols-outlined text-primary-dim text-lg" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+<!-- Live Match Card 3 -->
+<div class="bg-surface-container-highest rounded-xl p-5 border-l-4 border-primary shadow-xl group cursor-pointer hover:bg-surface-bright transition-colors">
+<div class="flex justify-between items-start mb-6">
+<span class="font-label text-[10px] uppercase font-bold text-on-surface-variant tracking-widest">Bundesliga</span>
+<div class="flex items-center gap-2 bg-error-container/20 px-2 py-0.5 rounded">
+<span class="font-label text-[10px] font-bold text-error">12'</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="Bayern Munich club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChXkO0XfVuEeBjWEqG5OF5oJDYAFQ9X4R795En6lWXRkPHE62M31fxTKusKf4zfohvn1ES2V75ncPkPZzYUxxH9jsS0qnUbxktcOeCBKiajFQ2lD6zlNnqTz4CxjpgrKeWPMT_kZBgRPjdzq1ZaRk6ypErnc1mjB8pSyexW7ZCkIGqvdqmPJpT5801BqGhA3p2Wmcwv524oOD2EM0bGxD8yIufdX0ZvMFEkcrNizEDvHoU5OjDc2OQ36eSqh9JZwFkTPnkzZGZH68"/>
+</div>
+<span class="font-body font-semibold text-lg">B. Munich</span>
+</div>
+<span class="font-headline text-3xl font-black text-primary">1</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain" data-alt="Borussia Dortmund club crest logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbBAKM2i1A6zW94iWGJY8DkYIV7g-DJQY3n4T5gzD9UCtDkkT0nJQhFgl0DVprPWBZHrQHN0irsns_ylYqS7o1GqRUSdC9P1gZUzlD23ZhjEaghav5oF5Dwavey7QG_cG6c8H4qhtAxsBxx_rXdMsITIel14LfM_o7UzsY5ybQctZmoQmdZ4hvWsr6YXuSozYT6wlGEPvcdPSrpL8sQCxWmnejU9GEr8GVbzvb-ugvs6vfBJM3fddpZZIv7SD9ar2YkmD82q35zuA"/>
+</div>
+<span class="font-body font-semibold text-lg">Dortmund</span>
+</div>
+<span class="font-headline text-3xl font-black text-on-surface-variant">0</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex gap-2">
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">xG 1.12</span>
+<span class="bg-surface-variant px-2 py-1 rounded text-[9px] font-label text-on-surface-variant uppercase">Poss. 55%</span>
+</div>
+<span class="material-symbols-outlined text-primary-dim text-lg" data-icon="query_stats">query_stats</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline text-2xl font-bold tracking-tight">UPCOMING NODES</h2>
+<div class="flex items-center gap-2">
+<span class="font-label text-[10px] uppercase font-bold text-on-surface-variant">Timezone: UTC+0</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Upcoming Row 1 -->
+<div class="bg-surface-container-low rounded-lg p-4 grid grid-cols-12 items-center gap-4 border border-outline-variant/5 hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="col-span-2 md:col-span-1">
+<span class="font-label text-xs font-bold text-primary">21:00</span>
+</div>
+<div class="col-span-6 md:col-span-4 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+<img class="w-3 h-3 object-contain" data-alt="Arsenal FC logo small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9spKEmYZ3m3rv80iDHBVorr6muzuNwELT4oDxXPAJxlAL7b5AJWcwPnTyEe4iFDSdamObcPFevSvQN8LbeiEazun-pL8AlbChVoligZyqrIdeqCjzG9g9HPuIA5zJb2dDpg0QH2Q0LeMTjxhX9KIhv5ih1HzQh7WrW0_kQUGcPcr6kKBusX7c-DRnqQx--Ie3FOrwlJEmfXNaGq6RO_lpfWdyjG2MB0BUAIv9jzRPDbxuzpQ0V_7x49FxXim-jHqgZ6v0YsXNmrg"/>
+</span>
+<span class="font-body text-sm font-medium">Arsenal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+<img class="w-3 h-3 object-contain" data-alt="Chelsea FC logo small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo3pWVDL5gIppcRvck92NK4pFOrV-WZVbCXyl_QPwpPO3O_8dMZMTcU4UGG58fkovy4fCBXcm7qkRy4I1bwuu-Zlv123CZA9M4ChGNR7i8pX6YBnohlPDVM9XH-olR-Mi3d82830GOWBJAyPtWNyoGZUyrT6p6G8hKuYWazpLM6DYTSJcPwY5sLUM7EO_NaTDOxbp7pRX62O6XksEp9Unjifj_pL0-jMHRskGJZEdXk4F9h1Dtw7IULqYARJ5LEY02d1h7OAzcrY4"/>
+</span>
+<span class="font-body text-sm font-medium">Chelsea</span>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 items-center">
+<span class="font-label text-[10px] uppercase text-on-surface-variant">Premier League</span>
+</div>
+<div class="col-span-4 md:col-span-5 flex justify-end gap-2">
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">1</span>
+<span class="font-headline text-xs font-bold">1.85</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">X</span>
+<span class="font-headline text-xs font-bold">3.40</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">2</span>
+<span class="font-headline text-xs font-bold">4.20</span>
+</div>
+</div>
+</div>
+<!-- Upcoming Row 2 -->
+<div class="bg-surface-container-low rounded-lg p-4 grid grid-cols-12 items-center gap-4 border border-outline-variant/5 hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="col-span-2 md:col-span-1">
+<span class="font-label text-xs font-bold text-on-surface-variant">TOM</span>
+</div>
+<div class="col-span-6 md:col-span-4 flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+<img class="w-3 h-3 object-contain" data-alt="PSG logo small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc6ZN6fMv39ctPqLC_R6drVjaXz-qrT19PucnGBUkosL-nN59D6IigsvJOpkZoG2G0_icdAqyZX1DLBFnzB6R75dISsVk7pZEj5HLw47SHsLLQqx58Pln7_are_nyn9glZFRgQ7tn7fzmFNb2Xk87o4FnL-exXFoZ6eiMwPruXWAkmnEIRrHa6sZ0ovmAt3aNS9iqCH0YCLd06W3s5jRKQyzluhvhmr_PFmPaGH_aH_ct2ijqxvODUTQ14Iy87lPl8pirswG_gxpg"/>
+</span>
+<span class="font-body text-sm font-medium">Paris SG</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+<img class="w-3 h-3 object-contain" data-alt="Marseille logo small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBqdEf1r7nx7J53ifQhbKzwOJn2FpaXrzQnAdXmwMAQO_RIo47a1q3TeKBDc0CxxdZ3TJoj2Ir5-AcwG7FQ0_gCXwBkgm7foImszdHzPV9Up8KySp71h8_Fj2XexA0MnDGIg58lbpVHL3bN7FRT-C3w6LMdhGr7vafj-GoSAvQZPp82tUcQJRCvvYMramJdI7Vpsj9PztyHXEdPj76cplX-JQVn856VngTabm_dfdie0OLcUZmv_vU38Cll829VWV_3uhAuBSviYQ"/>
+</span>
+<span class="font-body text-sm font-medium">Marseille</span>
+</div>
+</div>
+<div class="hidden md:flex col-span-2 items-center">
+<span class="font-label text-[10px] uppercase text-on-surface-variant">Ligue 1</span>
+</div>
+<div class="col-span-4 md:col-span-5 flex justify-end gap-2">
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">1</span>
+<span class="font-headline text-xs font-bold">1.45</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">X</span>
+<span class="font-headline text-xs font-bold">4.75</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-surface-container-highest px-3 py-1.5 rounded min-w-[50px]">
+<span class="font-label text-[9px] text-on-surface-variant mb-1">2</span>
+<span class="font-headline text-xs font-bold">7.50</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.5)] md:hidden">
+<div class="flex flex-col items-center justify-center text-[#9cff93] bg-[#9cff93]/10 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined text-2xl" data-icon="home_max">home_max</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Leagues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="rss_feed">rss_feed</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">News</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Profile</span>
+</div>
+</nav>
+<!-- FAB (Suppressed on Home by logic but if needed for specific action like 'Refresh' it can be here) -->
+<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform md:bottom-10">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</body></html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premier League Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Lexend:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed": "#353f56",
+                        "on-surface": "#f6f6f7",
+                        "on-tertiary-fixed-variant": "#3f5875",
+                        "tertiary-fixed-dim": "#b4cef0",
+                        "secondary-fixed-dim": "#c9d4f0",
+                        "surface-container-highest": "#232628",
+                        "on-primary": "#006413",
+                        "tertiary-fixed": "#c2dcff",
+                        "error-container": "#9f0519",
+                        "tertiary-dim": "#b4cef0",
+                        "surface-bright": "#292c2e",
+                        "on-error": "#490006",
+                        "primary-fixed-dim": "#00ec3b",
+                        "on-secondary": "#475269",
+                        "on-tertiary-container": "#354e6b",
+                        "surface-container-high": "#1d2021",
+                        "secondary": "#d7e2ff",
+                        "surface-container-lowest": "#000000",
+                        "primary-fixed": "#00fc40",
+                        "on-error-container": "#ffa8a3",
+                        "tertiary-container": "#c2dcff",
+                        "tertiary": "#dbe9ff",
+                        "surface-tint": "#9cff93",
+                        "error": "#ff716c",
+                        "secondary-dim": "#c9d4f0",
+                        "on-primary-fixed": "#00440a",
+                        "surface-variant": "#232628",
+                        "on-tertiary": "#3e5774",
+                        "primary-dim": "#00ec3b",
+                        "on-secondary-container": "#c5d0ec",
+                        "on-surface-variant": "#aaabac",
+                        "on-secondary-fixed-variant": "#515c73",
+                        "inverse-surface": "#f9f9fa",
+                        "outline": "#747577",
+                        "on-background": "#f6f6f7",
+                        "inverse-on-surface": "#545556",
+                        "on-tertiary-fixed": "#223c57",
+                        "surface-container-low": "#111415",
+                        "error-dim": "#d7383b",
+                        "surface": "#0c0e0f",
+                        "primary": "#9cff93",
+                        "secondary-container": "#3c475d",
+                        "on-primary-fixed-variant": "#006513",
+                        "on-primary-container": "#005a10",
+                        "surface-container": "#181a1b",
+                        "secondary-fixed": "#d7e2ff",
+                        "primary-container": "#00fc40",
+                        "inverse-primary": "#006f16",
+                        "background": "#0c0e0f",
+                        "outline-variant": "#464849",
+                        "surface-dim": "#0c0e0f"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Lexend"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanline-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-[0_0_32px_rgba(246,246,247,0.06)]">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="text-[#9cff93] active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-xl font-bold text-[#9cff93] tracking-widest font-['Space_Grotesk'] uppercase italic">
+                    PREMIER LEAGUE
+                </div>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] uppercase tracking-tighter text-sm">
+<a class="text-[#9cff93] border-b-2 border-[#9cff93] pb-1" href="#">Terminal</a>
+<a class="text-slate-400 hover:text-[#9cff93] transition-colors duration-200" href="#">Fixtures</a>
+<a class="text-slate-400 hover:text-[#9cff93] transition-colors duration-200" href="#">Standings</a>
+<a class="text-slate-400 hover:text-[#9cff93] transition-colors duration-200" href="#">Leaders</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#9cff93]">search</span>
+<div class="w-8 h-8 rounded-full border border-primary/30 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar of the league manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjc-QWmxfpruXrjQiz4IKIXeecQBImfhBPMBGNLXLJnqTl1E1qleZgXzhc9_vScEKNqJf1yYlIhVbu1EYHfOE3aaeVf3Wtsm2Rynj3L67TWGxVqXKNA81QeRbq7Bv-mSB1QSQCjfJBLmB9xCcKcxV-BH9gV70_N7Aoi3SwRmAGsUQLuE7X6ln5HQqCtU8XIjXgh7trADjg0US3pVpC8mILXx8l9A-qSkOSmNQ7HjavwEfcqc57EsIT3YL6vkSwF95-atzOvLmz0lo"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto space-y-10 relative">
+<!-- Background Decorative Elements -->
+<div class="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/5 rounded-full blur-[120px]"></div>
+<!-- Header Hero Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-outline-variant/20 pb-8">
+<div class="space-y-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label text-xs uppercase tracking-[0.2em] text-on-surface-variant">Live Feed Status: Syncing</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter uppercase italic text-on-surface">
+                    LEAGUE <span class="text-primary italic">TERMINAL</span>
+</h1>
+<p class="font-body text-on-surface-variant max-w-lg">Advanced tactical data and real-time standing updates for the 2023/24 Premier League campaign.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-surface-container-high rounded-xl font-label text-[10px] uppercase tracking-widest text-primary border border-primary/20">Matchday 34</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-xl font-label text-[10px] uppercase tracking-widest text-on-surface-variant border border-outline-variant/20">Live Sync: 4.2ms</span>
+</div>
+</section>
+<!-- Stats Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Goal Leader -->
+<div class="group relative overflow-hidden bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container-high border-l-4 border-primary">
+<div class="relative z-10 flex flex-col justify-between h-full space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Top Scorer</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">sports_soccer</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold text-on-surface tracking-tight uppercase">HAALAND</h3>
+<p class="font-body text-sm text-on-surface-variant">Manchester City</p>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-primary">23</span>
+<span class="font-label text-xs uppercase text-on-surface-variant">Goals</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-9xl text-on-surface" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<!-- Assist Leader -->
+<div class="group relative overflow-hidden bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container-high border-l-4 border-tertiary">
+<div class="relative z-10 flex flex-col justify-between h-full space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Top Assists</span>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">ads_click</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold text-on-surface tracking-tight uppercase">WATKINS</h3>
+<p class="font-body text-sm text-on-surface-variant">Aston Villa</p>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-tertiary">12</span>
+<span class="font-label text-xs uppercase text-on-surface-variant">Assists</span>
+</div>
+</div>
+</div>
+<!-- Clean Sheets -->
+<div class="group relative overflow-hidden bg-surface-container-low rounded-xl p-6 transition-all hover:bg-surface-container-high border-l-4 border-on-secondary-fixed">
+<div class="relative z-10 flex flex-col justify-between h-full space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Clean Sheets</span>
+<span class="material-symbols-outlined text-on-secondary-fixed" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<h3 class="font-headline text-3xl font-bold text-on-surface tracking-tight uppercase">RAYA</h3>
+<p class="font-body text-sm text-on-surface-variant">Arsenal FC</p>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-5xl font-black text-on-secondary-fixed">10</span>
+<span class="font-label text-xs uppercase text-on-surface-variant">Sheets</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Data Content: Standing and Fixtures -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Standings Table (Left Column) -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-2xl font-bold tracking-tight uppercase italic text-on-surface">Live Standings</h2>
+<div class="flex bg-surface-container-low p-1 rounded-lg gap-1">
+<button class="px-3 py-1 bg-primary/20 text-primary rounded-md text-xs font-label uppercase">Overall</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface rounded-md text-xs font-label uppercase">Home</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface rounded-md text-xs font-label uppercase">Away</button>
+</div>
+</div>
+<div class="overflow-x-auto rounded-xl bg-surface-container-low p-1">
+<table class="w-full text-left border-separate border-spacing-y-1">
+<thead class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant">
+<tr>
+<th class="px-6 py-4">Rank</th>
+<th class="px-6 py-4">Team</th>
+<th class="px-6 py-4 text-center">GP</th>
+<th class="px-6 py-4 text-center">GD</th>
+<th class="px-6 py-4 text-center">Pts</th>
+<th class="px-6 py-4 text-center">Form</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm">
+<!-- Team 1 -->
+<tr class="bg-surface-container-highest group">
+<td class="px-6 py-4 font-label text-primary font-bold">01</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-75">star</span>
+</div>
+<span class="font-semibold uppercase tracking-tight">Arsenal</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center font-label">33</td>
+<td class="px-6 py-4 text-center font-label">+51</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-primary">74</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</td>
+</tr>
+<!-- Team 2 -->
+<tr class="bg-surface-container-highest/60 group">
+<td class="px-6 py-4 font-label text-primary font-bold">02</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary scale-75">shield</span>
+</div>
+<span class="font-semibold uppercase tracking-tight">Man City</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center font-label">32</td>
+<td class="px-6 py-4 text-center font-label">+44</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-on-surface">73</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</td>
+</tr>
+<!-- Team 3 -->
+<tr class="bg-surface-container-highest/60 group">
+<td class="px-6 py-4 font-label text-primary font-bold">03</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed scale-75">shield</span>
+</div>
+<span class="font-semibold uppercase tracking-tight">Liverpool</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center font-label">33</td>
+<td class="px-6 py-4 text-center font-label">+43</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-on-surface">71</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</td>
+</tr>
+<!-- Team 4 (CL Boundary) -->
+<tr class="bg-surface-container-highest/60 group border-b border-primary/20">
+<td class="px-6 py-4 font-label text-primary font-bold">04</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant scale-75">shield</span>
+</div>
+<span class="font-semibold uppercase tracking-tight">Aston Villa</span>
+</div>
+</td>
+<td class="px-6 py-4 text-center font-label">34</td>
+<td class="px-6 py-4 text-center font-label">+21</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-on-surface">66</td>
+<td class="px-6 py-4">
+<div class="flex justify-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+</td>
+</tr>
+<!-- Spacer Row -->
+<tr class="h-8"></tr>
+<!-- Relegation Spots (Bottom 3 Simplified) -->
+<tr class="bg-surface-container-highest/30 group">
+<td class="px-6 py-4 font-label text-error font-bold">18</td>
+<td class="px-6 py-4"><span class="font-semibold uppercase tracking-tight text-on-surface-variant">Luton Town</span></td>
+<td class="px-6 py-4 text-center font-label">34</td>
+<td class="px-6 py-4 text-center font-label">-28</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-error">25</td>
+<td class="px-6 py-4"></td>
+</tr>
+<tr class="bg-surface-container-highest/30 group">
+<td class="px-6 py-4 font-label text-error font-bold">19</td>
+<td class="px-6 py-4"><span class="font-semibold uppercase tracking-tight text-on-surface-variant">Burnley</span></td>
+<td class="px-6 py-4 text-center font-label">34</td>
+<td class="px-6 py-4 text-center font-label">-37</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-error">23</td>
+<td class="px-6 py-4"></td>
+</tr>
+<tr class="bg-surface-container-highest/30 group">
+<td class="px-6 py-4 font-label text-error font-bold">20</td>
+<td class="px-6 py-4"><span class="font-semibold uppercase tracking-tight text-on-surface-variant">Sheff Utd</span></td>
+<td class="px-6 py-4 text-center font-label">34</td>
+<td class="px-6 py-4 text-center font-label">-59</td>
+<td class="px-6 py-4 text-center font-headline font-bold text-error">16</td>
+<td class="px-6 py-4"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Upcoming Fixtures (Right Column) -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-2xl font-bold tracking-tight uppercase italic text-on-surface">Upcoming</h2>
+<span class="text-primary material-symbols-outlined cursor-pointer">event_note</span>
+</div>
+<div class="space-y-4">
+<!-- Fixture Card 1 -->
+<div class="p-5 bg-surface-container-low rounded-xl border border-outline-variant/10 relative overflow-hidden group hover:border-primary/30 transition-all">
+<div class="absolute top-0 right-0 p-2">
+<span class="font-label text-[10px] text-primary bg-primary/10 px-2 py-1 rounded">MATCHDAY 35</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between font-label text-xs text-on-surface-variant">
+<span>SAT, APR 27</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded">12:30 BST</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-xs">WHU</div>
+<span class="font-headline text-sm font-bold uppercase">West Ham</span>
+</div>
+<span class="text-xs text-on-surface-variant font-label">HOME</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-xs border border-primary/40">LIV</div>
+<span class="font-headline text-sm font-bold uppercase">Liverpool</span>
+</div>
+<span class="text-xs text-on-surface-variant font-label">AWAY</span>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-high text-on-surface-variant text-[10px] uppercase tracking-widest font-label rounded hover:bg-primary hover:text-on-primary transition-colors">Tactical Preview</button>
+</div>
+</div>
+<!-- Fixture Card 2 -->
+<div class="p-5 bg-surface-container-low rounded-xl border border-outline-variant/10 relative overflow-hidden group hover:border-primary/30 transition-all">
+<div class="space-y-4">
+<div class="flex items-center justify-between font-label text-xs text-on-surface-variant">
+<span>SAT, APR 27</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded">15:00 BST</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-xs">MUN</div>
+<span class="font-headline text-sm font-bold uppercase">Man Utd</span>
+</div>
+<span class="text-xs text-on-surface-variant font-label">HOME</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-xs">BUR</div>
+<span class="font-headline text-sm font-bold uppercase">Burnley</span>
+</div>
+<span class="text-xs text-on-surface-variant font-label">AWAY</span>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-high text-on-surface-variant text-[10px] uppercase tracking-widest font-label rounded hover:bg-primary hover:text-on-primary transition-colors">Tactical Preview</button>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="p-6 bg-gradient-to-br from-primary to-primary-container rounded-xl text-on-primary space-y-3 relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline text-lg font-black uppercase italic tracking-tight">Access Full Analytics</h4>
+<p class="text-xs opacity-90 mb-4">Unlock xG maps, passing networks, and defensive action charts for every match.</p>
+<button class="bg-on-primary text-primary px-4 py-2 rounded-lg text-[10px] font-label uppercase font-black tracking-widest">Upgrade to Scout+</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl opacity-20 rotate-12" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Navigation Shell (BottomNavBar for Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 rounded-t-xl bg-slate-950/80 backdrop-blur-2xl border-t border-slate-800/50 shadow-2xl flex justify-around items-center px-4 py-3 pb-safe">
+<a class="flex flex-col items-center justify-center bg-[#9cff93]/10 text-[#9cff93] rounded-xl px-3 py-1 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium">Terminal</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-800/50 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium">Fixtures</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-800/50 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">format_list_numbered</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium">Standings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-800/50 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:bg-slate-800/50 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium">Squads</span>
+</a>
+</nav>
+<div class="scanline-overlay fixed inset-0 z-[100] opacity-[0.03] pointer-events-none"></div>
+</body></html>

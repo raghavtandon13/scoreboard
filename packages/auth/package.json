@@ -1,24 +1,24 @@
 {
-  "name": "@scoreboard/auth",
-  "type": "module",
-  "exports": {
-    ".": {
-      "default": "./src/index.ts"
+    "name": "@scoreboard/auth",
+    "type": "module",
+    "exports": {
+        ".": {
+            "default": "./src/index.ts"
+        },
+        "./*": {
+            "default": "./src/*.ts"
+        }
     },
-    "./*": {
-      "default": "./src/*.ts"
+    "scripts": {},
+    "dependencies": {
+        "@scoreboard/db": "workspace:*",
+        "@scoreboard/env": "workspace:*",
+        "better-auth": "catalog:",
+        "dotenv": "catalog:",
+        "zod": "catalog:"
+    },
+    "devDependencies": {
+        "@scoreboard/config": "workspace:*",
+        "typescript": "^5"
     }
-  },
-  "scripts": {},
-  "dependencies": {
-    "@scoreboard/db": "workspace:*",
-    "@scoreboard/env": "workspace:*",
-    "better-auth": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:"
-  },
-  "devDependencies": {
-    "@scoreboard/config": "workspace:*",
-    "typescript": "^5"
-  }
 }

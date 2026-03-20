@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;family=Lexend:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#1d2021",
+              "tertiary-container": "#c2dcff",
+              "primary-dim": "#00ec3b",
+              "on-surface": "#f6f6f7",
+              "surface-container-lowest": "#000000",
+              "surface-container": "#181a1b",
+              "error-dim": "#d7383b",
+              "inverse-primary": "#006f16",
+              "on-error": "#490006",
+              "secondary-fixed-dim": "#c9d4f0",
+              "on-secondary-fixed-variant": "#515c73",
+              "tertiary": "#dbe9ff",
+              "on-tertiary-fixed-variant": "#3f5875",
+              "surface": "#0c0e0f",
+              "surface-tint": "#9cff93",
+              "on-tertiary-container": "#354e6b",
+              "error-container": "#9f0519",
+              "on-error-container": "#ffa8a3",
+              "on-primary-container": "#005a10",
+              "surface-variant": "#232628",
+              "on-secondary-container": "#c5d0ec",
+              "on-primary-fixed-variant": "#006513",
+              "primary-fixed-dim": "#00ec3b",
+              "on-surface-variant": "#aaabac",
+              "primary": "#9cff93",
+              "on-secondary": "#475269",
+              "surface-dim": "#0c0e0f",
+              "tertiary-dim": "#b4cef0",
+              "on-background": "#f6f6f7",
+              "surface-container-highest": "#232628",
+              "on-tertiary-fixed": "#223c57",
+              "tertiary-fixed": "#c2dcff",
+              "primary-fixed": "#00fc40",
+              "inverse-on-surface": "#545556",
+              "surface-bright": "#292c2e",
+              "on-primary": "#006413",
+              "background": "#0c0e0f",
+              "inverse-surface": "#f9f9fa",
+              "secondary-dim": "#c9d4f0",
+              "secondary-container": "#3c475d",
+              "on-error-container": "#ffa8a3",
+              "on-primary-fixed": "#00440a",
+              "outline-variant": "#464849",
+              "on-secondary-fixed": "#353f56",
+              "error": "#ff716c",
+              "tertiary-fixed-dim": "#b4cef0",
+              "outline": "#747577",
+              "secondary-fixed": "#d7e2ff",
+              "surface-container-low": "#111415",
+              "primary-container": "#00fc40",
+              "secondary": "#d7e2ff",
+              "on-tertiary": "#3e5774"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_0_32px_rgba(246,246,247,0.06)]">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#9cff93]" data-icon="terminal">terminal</span>
+<h1 class="font-['Space_Grotesk'] font-bold tracking-tighter uppercase text-xl font-black text-[#9cff93] tracking-widest">KINETIC TERMINAL</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-[#9cff93]/10 transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface">search</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="User profile avatar icon circular" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo0fgXRnERf2eRUpYqMrDmPpM9I3D6TUTCZ5IUcJEXbQ2z3zj3Td44kdFk0Qch2yA3sGJTZSLkGSAkg-_AmH1mFk-mDNAFShDMsrPQTgc7wRAa8R3wAku9pRkU3YfiywAK5V6CRrL2DzC3_v1pUvGlorLjBbJuHBDnp0g6qjXsXRM9KUHAqw4W0qmNcOTsW1qiFIkaeZ5BNcC7e1dk-RQxlnAvbnChUwzUk8xtrJIdw3GsP8AQliTo3y07atOKqgZMeaTffsPRcec"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
+<!-- Hero Scoreboard -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-low p-8 md:p-12 border border-outline-variant/10">
+<div class="absolute top-0 right-0 p-4">
+<div class="flex items-center gap-2 bg-error-container/20 text-error px-3 py-1 rounded-full border border-error/20">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="font-label text-xs font-bold uppercase tracking-wider">Live • 74'</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+<!-- Team A -->
+<div class="flex flex-col items-center md:items-end space-y-4">
+<img alt="Real Madrid" class="w-24 h-24 md:w-32 md:h-32 object-contain" data-alt="Real Madrid team logo shield" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV6hp8lB0KUBGKGLqOWzLKpsw3oF1zXTBC5X9arGJDXi58AANFyv6cKDTOheAIoi9iqp3dlexnudaz3XVTY3fyNyzVem8LFLucz18n05LqCvf3Y5jEpr5-_mpqlTqawsUGAmPGCyGJIkY1esllnuNc_buWlSLcyu7PjTMMB9JLNFa628hdcSRwhjsM3mRS3YyiqAIkUdcnl5fEtNhruEPUmM0hqYKNiuPme_GIVac7768RxQF2cTHuGYujNfaqGezJlnAMkTaxjwg"/>
+<div class="text-center md:text-right">
+<h2 class="font-headline font-bold text-2xl md:text-4xl tracking-tight">Real Madrid</h2>
+<p class="font-label text-on-surface-variant text-sm uppercase">Santiago Bernabéu</p>
+</div>
+</div>
+<!-- Score -->
+<div class="flex flex-col items-center justify-center space-y-2">
+<div class="flex items-center gap-6 font-headline font-black text-6xl md:text-8xl tracking-tighter">
+<span class="text-on-surface">2</span>
+<span class="text-outline-variant/30 text-4xl md:text-6xl">:</span>
+<span class="text-primary">1</span>
+</div>
+<div class="bg-surface-container-highest px-4 py-1 rounded font-label text-xs tracking-widest text-on-surface-variant uppercase">
+                        La Liga • Matchday 32
+                    </div>
+</div>
+<!-- Team B -->
+<div class="flex flex-col items-center md:items-start space-y-4">
+<img alt="Barcelona" class="w-24 h-24 md:w-32 md:h-32 object-contain" data-alt="Barcelona team logo shield" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-0UnuFnjswYloQ-VvbjtuC5ue6z92zUktX19grOpneQcPb5iwaJd9yB6gJloY2f4RvATFgFNuTtZgdST5OVZo4KISCa90QCk7Hm_DYG7WgZQm745w4IRqc8lGYljkiHJXtB7j2dQvl2EJv8TzEg8LxbXlHX6bL2KLOBVxnDj4kSgFdmbnVxPHNrYbpgvVT8Sdin8IAHhfYZY8rXoXT0wmoH4IFOlkj32uRjHBVYC25pf1SsQxmJHjftWWcSCFxVZZ_0xFYJve3Nk"/>
+<div class="text-center md:text-left">
+<h2 class="font-headline font-bold text-2xl md:text-4xl tracking-tight">Barcelona</h2>
+<p class="font-label text-on-surface-variant text-sm uppercase">Away Team</p>
+</div>
+</div>
+</div>
+<!-- Match Timeline Spark -->
+<div class="mt-12 h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute inset-y-0 left-0 bg-primary-dim w-[74%]"></div>
+<!-- Event markers -->
+<div class="absolute left-[18%] top-0 h-full w-1 bg-on-surface" title="Goal RM 18'"></div>
+<div class="absolute left-[44%] top-0 h-full w-1 bg-on-surface" title="Goal FCB 44'"></div>
+<div class="absolute left-[62%] top-0 h-full w-1 bg-on-surface" title="Goal RM 62'"></div>
+</div>
+</section>
+<!-- Tabbed Interface -->
+<nav class="flex gap-2 p-1 bg-surface-container-low rounded-xl overflow-x-auto hide-scrollbar border border-outline-variant/5">
+<button class="flex-1 min-w-[120px] py-3 px-6 rounded-lg font-label text-sm font-bold uppercase tracking-widest transition-all bg-primary/10 text-primary">Stats</button>
+<button class="flex-1 min-w-[120px] py-3 px-6 rounded-lg font-label text-sm font-bold uppercase tracking-widest transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest">Line-ups</button>
+<button class="flex-1 min-w-[120px] py-3 px-6 rounded-lg font-label text-sm font-bold uppercase tracking-widest transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest">Commentary</button>
+<button class="flex-1 min-w-[120px] py-3 px-6 rounded-lg font-label text-sm font-bold uppercase tracking-widest transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest">H2H</button>
+</nav>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Primary Stats Dash -->
+<div class="lg:col-span-8 space-y-6">
+<!-- Data Visualization Modules -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Possession Module -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline font-bold uppercase text-sm tracking-widest text-on-surface-variant">Possession %</h3>
+<span class="font-label text-xs text-primary bg-primary/10 px-2 py-0.5 rounded">Real-Time</span>
+</div>
+<div class="flex items-end justify-between gap-4 h-32">
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-[52%]">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 font-headline font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity">52%</div>
+</div>
+<div class="flex-1 bg-on-surface-variant/20 rounded-t-lg relative group h-[48%]">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 font-headline font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity">48%</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 font-label text-xs uppercase font-medium">
+<span>RMA</span>
+<span>BAR</span>
+</div>
+</div>
+<!-- xG Momentum -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline font-bold uppercase text-sm tracking-widest text-on-surface-variant">Expected Goals (xG)</h3>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between font-label text-xs">
+<span>Real Madrid</span>
+<span class="text-primary">2.14</span>
+</div>
+<div class="h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label text-xs">
+<span>Barcelona</span>
+<span>1.42</span>
+</div>
+<div class="h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-on-surface-variant w-[55%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Stats Table -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline font-bold uppercase text-sm tracking-widest">Match performance data</h3>
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="terminal">terminal</span>
+</div>
+<div class="divide-y divide-outline-variant/5">
+<!-- Stat Row -->
+<div class="grid grid-cols-3 p-4 items-center hover:bg-surface-container-highest transition-colors">
+<div class="text-center font-headline font-bold text-xl">14</div>
+<div class="text-center font-label text-[10px] uppercase tracking-tighter text-on-surface-variant">Total Shots</div>
+<div class="text-center font-headline font-bold text-xl text-on-surface-variant">9</div>
+</div>
+<!-- Stat Row -->
+<div class="grid grid-cols-3 p-4 items-center hover:bg-surface-container-highest transition-colors">
+<div class="text-center font-headline font-bold text-xl text-primary">6</div>
+<div class="text-center font-label text-[10px] uppercase tracking-tighter text-on-surface-variant">Shots on Target</div>
+<div class="text-center font-headline font-bold text-xl text-on-surface-variant">3</div>
+</div>
+<!-- Stat Row -->
+<div class="grid grid-cols-3 p-4 items-center hover:bg-surface-container-highest transition-colors">
+<div class="text-center font-headline font-bold text-xl">88%</div>
+<div class="text-center font-label text-[10px] uppercase tracking-tighter text-on-surface-variant">Pass Accuracy</div>
+<div class="text-center font-headline font-bold text-xl">84%</div>
+</div>
+<!-- Stat Row -->
+<div class="grid grid-cols-3 p-4 items-center hover:bg-surface-container-highest transition-colors">
+<div class="text-center font-headline font-bold text-xl">4</div>
+<div class="text-center font-label text-[10px] uppercase tracking-tighter text-on-surface-variant">Corners</div>
+<div class="text-center font-headline font-bold text-xl">7</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Feed -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Heatmap/Tactical Pitch -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 p-6 overflow-hidden">
+<h3 class="font-headline font-bold uppercase text-sm tracking-widest mb-4">Heatmap Cluster</h3>
+<div class="relative aspect-[3/4] rounded-lg bg-[#00440a]/40 border border-outline-variant/10 overflow-hidden">
+<!-- Pitch markings -->
+<div class="absolute inset-4 border border-on-surface/10 rounded-sm"></div>
+<div class="absolute inset-x-4 top-1/2 -translate-y-1/2 h-[1px] bg-on-surface/10"></div>
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border border-on-surface/10 rounded-full"></div>
+<!-- Simulated heat blobs -->
+<div class="absolute top-1/4 left-1/3 w-20 h-20 bg-primary/30 blur-2xl rounded-full"></div>
+<div class="absolute bottom-1/3 right-1/4 w-24 h-24 bg-primary/20 blur-2xl rounded-full"></div>
+<div class="absolute top-2/3 left-1/2 w-16 h-16 bg-error/10 blur-2xl rounded-full"></div>
+</div>
+<p class="font-label text-[10px] text-on-surface-variant uppercase mt-4 text-center">Active: Vini Jr. / Left Wing Focus</p>
+</div>
+<!-- Recent Events (Mini Commentary) -->
+<div class="bg-surface-container rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-4 bg-surface-container-highest flex items-center justify-between">
+<span class="font-headline font-bold text-xs uppercase tracking-widest">Key Events</span>
+<span class="font-label text-[10px] text-primary">LIVE</span>
+</div>
+<div class="p-4 space-y-4">
+<div class="flex gap-4">
+<span class="font-headline font-bold text-primary w-8 shrink-0">71'</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-error" data-icon="rectangle" style="font-variation-settings: 'FILL' 1;">rectangle</span>
+<p class="font-body text-sm font-bold">Yellow Card</p>
+</div>
+<p class="text-xs text-on-surface-variant">Eduardo Camavinga (Real Madrid)</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="font-headline font-bold text-primary w-8 shrink-0">62'</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="sports_soccer">sports_soccer</span>
+<p class="font-body text-sm font-bold">GOAL!</p>
+</div>
+<p class="text-xs text-on-surface-variant">Jude Bellingham (Real Madrid) - Assisted by Vini Jr.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#292c2e]/60 backdrop-blur-xl z-50 shadow-[0_-8px_24px_rgba(0,0,0,0.5)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home_max">home_max</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#9cff93] bg-[#9cff93]/10 rounded-xl px-4 py-1 ease-out duration-200 transform-gpu" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Leagues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="rss_feed">rss_feed</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#f6f6f7]/60 hover:text-[#9cff93] transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Lexend'] text-[10px] uppercase font-medium tracking-tight">Profile</span>
+</a>
+</nav>
+</body></html>
